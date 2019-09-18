@@ -22,56 +22,48 @@
         </div>
       </div>
       <div class="content">
-       <router-link tag="div" style="text-decoration: none" class="router_link" to="" v-for="(i, index) in arr">
-         <span :class="[index==0?'hebei':'qita']" class="iconfont">{{i.img}}</span>
+       <router-link tag="div" class="router_link" to="" v-for="(i, index) in arr" :class="{hebei:index!=0}">
+         <img class="img" :src="i.img" alt="">
          <p style="padding-top: .2rem;">{{i.name}}</p>
        </router-link>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
     name: 'home',
     data () {
       return {
         arr:[
-            {img:'\ue6e7',name:'河北快三'},
-            {img:'\ue61c',name:'安徽快三'},
-            {img:'\ue61c',name:'江苏快三'},
-            {img:'\ue61c',name:'江西快三'},
-            {img:'\ue61c',name:'内蒙古快三'},
-            {img:'\ue61c',name:'吉林快三'},
-            {img:'\ue61c',name:'湖北快三'},
-            {img:'\ue61c',name:'贵州快三'},
-            {img:'\ue61c',name:'广州快三'},
-            {img:'\ue61c',name:'甘肃快三'},
-            {img:'\ue61c',name:'福建快三'},
-            {img:'\ue61c',name:'北京快三'},
-            {img:'\ue61c',name:'上海快三'}
+            {img: require('../assets/img/1.png'),name:'河北快三'},
+            {img: require('../assets/img/2.jpg'),name:'安徽快三'},
+            {img:require('../assets/img/2.jpg'),name:'江苏快三'},
+            {img:require('../assets/img/2.jpg'),name:'江西快三'},
+            {img:require('../assets/img/2.jpg'),name:'内蒙古快三'},
+            {img:require('../assets/img/2.jpg'),name:'吉林快三'},
+            {img:require('../assets/img/2.jpg'),name:'湖北快三'},
+            {img:require('../assets/img/2.jpg'),name:'贵州快三'},
+            {img:require('../assets/img/2.jpg'),name:'广州快三'},
+            {img:require('../assets/img/2.jpg'),name:'甘肃快三'},
+            {img:require('../assets/img/2.jpg'),name:'福建快三'},
+            {img:require('../assets/img/2.jpg'),name:'北京快三'},
+            {img:require('../assets/img/2.jpg'),name:'上海快三'}
         ]
       }
     },
     methods:{
         myEvent(){
             this.$emit('click')
+        },
+        che(){
+            console.log(111)
         }
     },
 }
 </script>
 <style scoped>
   .hebei{
-    font-size: 1.65rem;
-    color: #60ff1a;
-    margin-top: .21rem;
-    display: block;
-  }
-  .qita{
-    font-size: 1.4rem;
-    color:#bfb186;
-    margin-top: .3rem;
-    display: block;
     pointer-events: none;
   }
   .warp{
@@ -119,6 +111,7 @@ export default {
   }
   .content .router_link{
     width: 2.5rem;
+    height: 2.5rem;
     font-size: 0.375rem;
     color: #48b892;
   }
