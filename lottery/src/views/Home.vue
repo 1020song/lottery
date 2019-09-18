@@ -7,7 +7,7 @@
         <div class="login">
           <router-link to="" class="bg_img">
 <!--            用户信息-->
-            <img src="../assets/img/1.png" alt="">
+            <span class="iconfont">&#xe601;</span>
             <p class="username">用户名</p>
           </router-link>
         </div>
@@ -22,8 +22,8 @@
         </div>
       </div>
       <div class="content">
-       <router-link class="router_link" to="" v-for="i in arr">
-         <img :src="i.img" alt="" class="img">
+       <router-link tag="div" style="text-decoration: none" class="router_link" to="" v-for="(i, index) in arr">
+         <span :class="[index==0?'hebei':'qita']" class="iconfont">{{i.img}}</span>
          <p style="padding-top: .2rem;">{{i.name}}</p>
        </router-link>
       </div>
@@ -37,19 +37,19 @@ export default {
     data () {
       return {
         arr:[
-            {img:'/img/1.ea0489f1.png',name:'河北快三'},
-            {img:'/img/2.f388457f.jpg',name:'安徽快三'},
-            {img:'/img/2.f388457f.jpg',name:'江苏快三'},
-            {img:'/img/2.f388457f.jpg',name:'江西快三'},
-            {img:'/img/2.f388457f.jpg',name:'内蒙古快三'},
-            {img:'/img/2.f388457f.jpg',name:'吉林快三'},
-            {img:'/img/2.f388457f.jpg',name:'湖北快三'},
-            {img:'/img/2.f388457f.jpg',name:'贵州快三'},
-            {img:'/img/2.f388457f.jpg',name:'广州快三'},
-            {img:'/img/2.f388457f.jpg',name:'甘肃快三'},
-            {img:'/img/2.f388457f.jpg',name:'福建快三'},
-            {img:'/img/2.f388457f.jpg',name:'北京快三'},
-            {img:'/img/2.f388457f.jpg',name:'上海快三'}
+            {img:'\ue6e7',name:'河北快三'},
+            {img:'\ue61c',name:'安徽快三'},
+            {img:'\ue61c',name:'江苏快三'},
+            {img:'\ue61c',name:'江西快三'},
+            {img:'\ue61c',name:'内蒙古快三'},
+            {img:'\ue61c',name:'吉林快三'},
+            {img:'\ue61c',name:'湖北快三'},
+            {img:'\ue61c',name:'贵州快三'},
+            {img:'\ue61c',name:'广州快三'},
+            {img:'\ue61c',name:'甘肃快三'},
+            {img:'\ue61c',name:'福建快三'},
+            {img:'\ue61c',name:'北京快三'},
+            {img:'\ue61c',name:'上海快三'}
         ]
       }
     },
@@ -61,6 +61,19 @@ export default {
 }
 </script>
 <style scoped>
+  .hebei{
+    font-size: 1.65rem;
+    color: #60ff1a;
+    margin-top: .21rem;
+    display: block;
+  }
+  .qita{
+    font-size: 1.4rem;
+    color:#bfb186;
+    margin-top: .3rem;
+    display: block;
+    pointer-events: none;
+  }
   .warp{
     height:100%;
     background-color: #077552;
@@ -78,9 +91,8 @@ export default {
     color: #fff;
     text-decoration: none;
   }
-  .bg_img img{
-    width:1.3rem;
-    height: 1.3rem;
+  .bg_img span{
+    font-size: 1.65rem;
   }
   .username{
     padding: 0.3125rem 0;
@@ -107,7 +119,6 @@ export default {
   }
   .content .router_link{
     width: 2.5rem;
-    height: 2.5rem;
     font-size: 0.375rem;
     color: #48b892;
   }
