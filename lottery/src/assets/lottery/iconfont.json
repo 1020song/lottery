@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2935048",
+      "name": "头像",
+      "font_class": "a",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "3933025",
+      "name": "河北快3",
+      "font_class": "hebeikuai",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "9603282",
+      "name": "快三",
+      "font_class": "kuaisan",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}
