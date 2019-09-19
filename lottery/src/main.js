@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import vueResource from 'vue-resource'
+import './assets/lottery/iconfont.css'
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
+Vue.use(vueResource)
 Vue.prototype.$axios = axios
-import './assets/lottery/iconfont.css'
 new Vue({
   router,
   store,

@@ -3,7 +3,7 @@
     <div class="warp">
 <!--      头部-->
       <div class="tit">
-        <h3>上午好！朋友</h3>
+        <h3>{{tartTime()<6?'早上好！朋友':tartTime()>6&&tartTime()<11?'上午好！朋友':tartTime()>11&&tartTime()<14?'中午好！朋友':tartTime()>14&&tartTime()<17?'下午好！朋友':tartTime()>17&&tartTime()<24?'晚上好！朋友':''}}</h3>
         <div class="login">
           <router-link to="" class="bg_img">
 <!--            用户信息-->
@@ -17,12 +17,12 @@
             <span>1420模拟金</span>
           </div>
           <div class="oper_convert">
-            <span>2积分</span><router-link to="" style="color: #fff;margin-left: 0.3125rem;text-decoration: none">兑换</router-link>
+            <span>2积分</span><router-link to="/Integral" style="color: #fff;margin-left: 0.3125rem;text-decoration: none">兑换</router-link>
           </div>
         </div>
       </div>
       <div class="content">
-       <router-link tag="div" class="router_link" to="" v-for="(i, index) in arr" :class="{hebei:index!=0}">
+       <router-link tag="div" class="router_link" to="" v-for="(i, index) in arr" :class="{hebei:index!=0}" :key="index">
          <img class="img" :src="i.img" alt="">
          <p style="padding-top: .2rem;">{{i.name}}</p>
        </router-link>
@@ -35,36 +35,40 @@ export default {
     name: 'home',
     data () {
       return {
-        arr:[
-            {img: require('../assets/img/1.png'),name:'河北快三'},
-            {img: require('../assets/img/2.jpg'),name:'安徽快三'},
-            {img:require('../assets/img/2.jpg'),name:'江苏快三'},
-            {img:require('../assets/img/2.jpg'),name:'江西快三'},
-            {img:require('../assets/img/2.jpg'),name:'内蒙古快三'},
-            {img:require('../assets/img/2.jpg'),name:'吉林快三'},
-            {img:require('../assets/img/2.jpg'),name:'湖北快三'},
-            {img:require('../assets/img/2.jpg'),name:'贵州快三'},
-            {img:require('../assets/img/2.jpg'),name:'广州快三'},
-            {img:require('../assets/img/2.jpg'),name:'甘肃快三'},
-            {img:require('../assets/img/2.jpg'),name:'福建快三'},
-            {img:require('../assets/img/2.jpg'),name:'北京快三'},
-            {img:require('../assets/img/2.jpg'),name:'上海快三'}
-        ]
-      }
+          tiem:0,
+          arr:[
+              {img: require('../assets/img/1.png'),name:'河北快三'},
+              {img: require('../assets/img/2.jpg'),name:'安徽快三'},
+              {img:require('../assets/img/2.jpg'),name:'江苏快三'},
+              {img:require('../assets/img/2.jpg'),name:'江西快三'},
+              {img:require('../assets/img/2.jpg'),name:'内蒙古快三'},
+              {img:require('../assets/img/2.jpg'),name:'吉林快三'},
+              {img:require('../assets/img/2.jpg'),name:'湖北快三'},
+              {img:require('../assets/img/2.jpg'),name:'贵州快三'},
+              {img:require('../assets/img/2.jpg'),name:'广州快三'},
+              {img:require('../assets/img/2.jpg'),name:'甘肃快三'},
+              {img:require('../assets/img/2.jpg'),name:'福建快三'},
+              {img:require('../assets/img/2.jpg'),name:'北京快三'},
+              {img:require('../assets/img/2.jpg'),name:'上海快三'}
+          ]
+        }
+    },
+    created(){
+      console.log(this.tartTime())
     },
     methods:{
-        myEvent(){
-            this.$emit('click')
-        },
-        che(){
-            console.log(111)
-        }
+      tartTime(){
+       var now = new Date()
+       var hour = now.getHours()
+          return hour
+      }
     },
 }
 </script>
 <style scoped>
 .home{
   text-align: center;
+  height: 100%;
 }
   .hebei{
     pointer-events: none;
