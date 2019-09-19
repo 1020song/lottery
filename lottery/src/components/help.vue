@@ -1,6 +1,6 @@
 <template>
   <div class="help">
-    <header>&lt;&nbsp;&nbsp;返回</header>
+    <!-- <header>&lt;&nbsp;&nbsp;返回</header> -->
     <div class="rules">
       <div class="rules_div">
         <div class="red_rules_div">
