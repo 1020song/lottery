@@ -6,7 +6,6 @@ var router = express.Router();
 /*注册*/
 router.post('/up', function (req, res) {
 	var json = req.body
-	console.log(req.body)
 	if (json.user == '' || json.pass == '') {
 		res.send({
 			type: 'no',
@@ -26,7 +25,7 @@ router.post('/up', function (req, res) {
 			fs.writeFileSync('./datalist/login.txt', JSON.stringify(vip), 'utf8')
 			res.send({
 				type: 'yes',
-				data: json
+				data: '注册成功'
 			})
 		} else {
 			res.send({
@@ -59,7 +58,7 @@ router.post('/in', function(req, res) {
 		if(user_type) {
 			res.send({
 				type: 'yes',
-				data: json,
+				data: '登录成功',
 				// url:data
 			})
 		} else {

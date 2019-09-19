@@ -5,16 +5,16 @@ const fs = require('fs')
 const router = express.Router()
 
 router.use(multer({
-    // dest:'../../lottery/public/images'
+    dest:'./public/images'
 }).any())
 
 router.get('/files',function(req,res){
-    // var file = req.files[0]
+    var file = req.files[0]
     console.log(req);
     
-    // var oldname = file.filename
-    // var newname = oldname+path.parse(file.originalname).ext
-    // fs.renameSync('../../lottery/public/images/'+oldname,'../../lottery/public/images/'+newname)
+    var oldname = file.filename
+    var newname = oldname+path.parse(file.originalname).ext
+    fs.renameSync('./public/images/'+oldname,'./public/images/'+newname)
     res.send('ok')
     
 })

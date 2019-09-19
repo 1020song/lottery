@@ -44,37 +44,55 @@ export default {
       },
       json_zhu: {
         user: "",
-        pass: ""
+        pass: "",
       }
 
-      // url: ""
+      
     };
   },
   methods: {
     btn(e) {
-      var f = e.target.files[0];
-      var d = new FormData();
-      d.append("img", f);
-      this.$axios
-        .get("/file/files", {
-          headers: "multipart/form-data"
-        })
-        .then(data => {
-          console.log(data);
-          // this.url = "http://localhost:8080/images/" + data.data;
-          // console.log(this.url);
-        });
+    //   var f = e.target.files[0];
+    //   var d = new FormData();
+    //   d.append("img", f);
+    //   this.$axios
+    //     .get("/file/files", {
+    //       headers: "multipart/form-data"
+    //     })
+    //     .then(data => {
+    //       console.log(data);
+    //       this.url = "http://localhost:8080/images/" + data.data;
+    //       console.log(this.url);
+    //     });
     },
     login() {
       this.$axios.post('/users/in',this.json_log)
       .then(data=>{
-        console.log(data);
+        if(!this.json_log.user){
+          alert('请输入账号')
+        }else if(!this.json_log.pass){
+          alert('请输入密码')
+        }else if(data.data.type=='no'){
+          alert(data.data.data)
+          this.json_log = ''
+        }else{
+          alert(data.data.data)
+        }
       })
     },
     zhu() {
       this.$axios.post('/users/up',this.json_zhu)
       .then(data=>{
-        console.log(data);
+        if(!this.json_zhu.user){
+          alert('请输入账号')
+        }else if(!this.json_zhu.pass){
+          alert('请输入密码')
+        }else if(data.data.type=='no'){
+          alert(data.data.data)
+          this.json_zhu = ''
+        }else{
+          alert(data.data.data)
+        }
         
       })
     }
