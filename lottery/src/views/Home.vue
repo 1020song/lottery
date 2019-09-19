@@ -11,9 +11,4 @@ export default {
 }
 </script>
 <style scoped>
-.home{
-  width: 10rem;
-  height: 1.5625rem ;
-  background: red;
-}
 </style>
