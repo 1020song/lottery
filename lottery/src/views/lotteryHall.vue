@@ -36,7 +36,7 @@
 		</div>
 	</div>
 </template>
-<style>
+<style scoped>
 .contain{
 	box-sizing: border-box;
 	position: fixed;
@@ -92,7 +92,8 @@
 	}
 	.tab>div{
 		flex: 1;
-		line-height: .46875rem /* 30/64 */
+		line-height: .46875rem /* 30/64 */;
+		text-align: center;
 	}
 	.tit{
 		height: 1.375rem /* 88/64 */;
@@ -122,7 +123,8 @@
 		border-right: .01rem solid gainsboro
 	}
 	.tit>div{
-		flex: 1
+		flex: 1;
+		text-align: center;
 	}
 </style>
 <script>

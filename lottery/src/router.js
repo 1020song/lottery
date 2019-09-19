@@ -12,7 +12,6 @@ import Integral from './components/Integral'
 import continues from './components/continue.vue' // 继续选号
 import help from './components/help.vue' // 帮助
 
-import Home from './views/Home.vue'
 import login from './views/login.vue'
 Vue.use(Router)
 
@@ -31,6 +30,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/help',
+      name: 'help',
+      component: help
+    },
+    {
       path: '/lotteryHall',
       name: 'lotteryHall',
       component: lotteryHall,
@@ -46,9 +50,6 @@ export default new Router({
           component: trend
         }
       ]
-      path: '/help',
-      name: 'help',
-      component: help
     },
     {
       path: '/continues',

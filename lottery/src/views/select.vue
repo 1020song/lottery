@@ -13,7 +13,7 @@
 			<div class="info_btn"><router-link to="/">?</router-link></div>
 		</div>
 		<!-- 和值 -->
-		<div style="padding:.1rem" v-if="types==type_btns[0]">
+		<div style="padding:.1rem;text-align: center;" v-if="types==type_btns[0]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖号码相加的和</p>
 			<div>
 				<div class="btns" v-for="(i,$index) in btn.H_num[0]" @click="btns($event)" :key="$index">
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<!-- 三同号 -->
-		<div style="padding:.1rem" v-if="types==type_btns[1]">
+		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[1]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜中豹子号(三个相同号)</p>
 			<div>
 				<div class="btns" v-for="(i,$index) in btn.threeT_num[0]" @click="btns($event)" :key="$index">
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<!-- 二同号 -->
-		<div style="padding:.1rem" v-if="types==type_btns[2]">
+		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[2]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>选择同号和不同号的组合,奖励80积分</p>
 			<div>
 				<div class="T">
@@ -73,7 +73,7 @@
 			
 		</div>
 		<!-- 三不同 -->
-		<div style="padding:.1rem" v-if="types==type_btns[3]">
+		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[3]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖的三个不同号码，奖励40积分</p>
 			<div>
 				<div class="btns" v-for="i in btn.threeB_num" @click="btns($event)">
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 		<!-- 二不同 -->
-		<div style="padding:.1rem" v-if="types==type_btns[4]">
+		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[4]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的不同号码，奖励8积分</p>
 			<div>
 				<div class="btns" v-for="i in btn.twoB_num" @click="btns($event)">
@@ -122,9 +122,9 @@
 	color: orange
 }
 .btns dl{
-	padding: .09375rem;
-	width: 1.1875rem /* 76/64 */;
-	height: .5625rem /* 36/64 */;
+	width: 100% ;
+	height: 100% ;
+	padding: 0.2rem 0;
 }
 .btns{
 	display: inline-block;
@@ -134,7 +134,7 @@
 	box-sizing: border-box;
     border-width: 2px;
     color: #fff;
-	width: 16%;
+	width: 30%;
 	border-radius: .0625rem /* 4/64 */;
     border-color: #229474;
     background-color: #08533c!important;
