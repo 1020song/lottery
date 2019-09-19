@@ -213,7 +213,7 @@ button {
   padding: 8px 0;
 }
 .mydiv {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #f5f5f5;
 }
 .v-list--two-line .v-list__tile {
   height: 72px;

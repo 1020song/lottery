@@ -4,8 +4,8 @@ import Router from 'vue-router'
 
 import Integral from './components/Integral'
 
-import continues from './components/continue.vue' //继续选号
-import help from './components/help.vue' //帮助
+import continues from './components/continue.vue' // 继续选号
+import help from './components/help.vue' // 帮助
 
 import Home from './views/Home.vue'
 import login from './views/login.vue'

@@ -17,12 +17,12 @@
             <span>1420模拟金</span>
           </div>
           <div class="oper_convert">
-            <span>2积分</span><router-link to="" style="color: #fff;margin-left: 0.3125rem;text-decoration: none">兑换</router-link>
+            <span>2积分</span><router-link to="/Integral" style="color: #fff;margin-left: 0.3125rem;text-decoration: none">兑换</router-link>
           </div>
         </div>
       </div>
       <div class="content">
-       <router-link tag="div" class="router_link" to="" v-for="(i, index) in arr" :class="{hebei:index!=0}">
+       <router-link tag="div" class="router_link" to="" v-for="(i, index) in arr" :class="{hebei:index!=0}" :key="index">
          <img class="img" :src="i.img" alt="">
          <p style="padding-top: .2rem;">{{i.name}}</p>
        </router-link>
@@ -65,6 +65,7 @@ export default {
 <style scoped>
 .home{
   text-align: center;
+  height: 100%;
 }
   .hebei{
     pointer-events: none;
