@@ -6,6 +6,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
 Vue.prototype.$axios = axios
+import './assets/lottery/iconfont.css'
 new Vue({
   router,
   store,
