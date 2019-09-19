@@ -84,7 +84,8 @@
 		
 	}
 	.tab>div a{
-		color: orange
+		color: orange;
+		display: block;
 	}
 	.tab{
 		display: flex;

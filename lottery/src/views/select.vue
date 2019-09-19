@@ -118,7 +118,7 @@
 	z-index: 99;
 }
 .btns .active{
-	outline: .03125rem /* 2/64 */ solid orange;
+	outline: .046875rem /* 3/64 */ solid orange;
 	color: orange
 }
 .btns dl{
