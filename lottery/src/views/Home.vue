@@ -63,8 +63,6 @@ export default {
 }
 </script>
 <style scoped>
-<<<<<<< HEAD
-=======
   .hebei{
     pointer-events: none;
   }
@@ -123,5 +121,4 @@ export default {
     border-radius: 50%;
     margin-top: .4rem;
   }
->>>>>>> 885b4ab60ee46db4460a3bd10a5e5597957fa7f2
 </style>
