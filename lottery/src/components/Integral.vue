@@ -133,6 +133,8 @@ export default {
 		line-height: 1.5rem;
 		background-color: #ccc;
 		font-size: 0.3rem;
+		box-sizing: border-box;
+		text-align: center;
 	}
 	.exchange .active{
 		border-bottom: 2px solid red;

@@ -15,7 +15,7 @@
         <div class="zhus" v-show="!type">
           <div class="file">
             <input type="file" @change="btn($event)">
-            <!-- <img :src="url " style="width: 100%;height: 100%;border-radius:50%;"> -->
+            <img :src="json_zhu.img_url" style="width: 100%;height: 100%;border-radius:50%;">
           </div>
           <div class="si" style="margin-top:50px">
             <input type="text" placeholder="请输入账号" v-model="json_zhu.user">
@@ -30,6 +30,7 @@
           <div class="item" @click="type=false">注册</div>
         </div>
       </div>
+      <img src="" alt="">
     </header>
   </div>
 </template>
@@ -44,26 +45,22 @@ export default {
       },
       json_zhu: {
         user: "",
-        pass: ""
+        pass: "",
+        img_url:'',
       }
-
-      // url: ""
     };
   },
   methods: {
-    btn(e) {
-      var f = e.target.files[0];
-      var d = new FormData();
-      d.append("img", f);
-      this.$axios
-        .get("/file/files", {
-          headers: "multipart/form-data"
-        })
-        .then(data => {
-          console.log(data);
-          // this.url = "http://localhost:8080/images/" + data.data;
-          // console.log(this.url);
-        });
+    btn($event) {
+      var f = $event.target.files[0]
+      var d = new FormData
+      d.append('img', f)
+      this.$http.post('/file/files', d, {
+        headers: 'multipart/form-data'
+      }).then((data) => {
+        console.log(data)
+        this.json_zhu.img_url = 'http://localhost:8000/file/'+data.data
+      })
     },
     login() {
       this.$axios.post('/users/in',this.json_log)
