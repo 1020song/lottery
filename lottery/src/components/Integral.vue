@@ -10,57 +10,58 @@
 			<!-- <div class="exchange fl" v-for="(i,$index) in exchange" :class="index==$index?'active':''" @click="add($index)">
 				{{i}}
 			</div> -->
-			<a href="#" @click="tabId=0" :class="tabId==0?'active':''">兑换区</a>
-     		<a href="#" @click="tabId=1" :class="tabId==1?'active':''">购物区</a>
-
+			<a href="#" @click="tabId=0" >兑换区</a>
+     		<a href="#" @click="tabId=1" >购物区</a>
+			<div :style='{"left":tabId*50+"%","transition":"all 0.5s"}'></div>
 		</div>
-		<div class='outNode clearfix'>
-			<div v-show="tabId===0" class="item1">
-				<div class="list1">
-					<div>
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546077945538&di=003d3de1479ae95ab6131ca11d042c4a&imgtype=0&src=http%3A%2F%2Fa.vpimg3.com%2Fupload%2Fmerchandise%2Fpdcvis%2F146767%2F2017%2F1104%2F115%2F88257c95-7205-4390-8eab-635fc8384069_t.jpg" alt="">
+		<div class='outNode'>
+			<div :style='{"width":"200%","position":"absolute","top":"0","left":-tabId*100+"%","transition":"all 0.5s"}'>
+				<div class="item1 clearfix">
+					<div class="list1">
+						<div>
+							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546077945538&di=003d3de1479ae95ab6131ca11d042c4a&imgtype=0&src=http%3A%2F%2Fa.vpimg3.com%2Fupload%2Fmerchandise%2Fpdcvis%2F146767%2F2017%2F1104%2F115%2F88257c95-7205-4390-8eab-635fc8384069_t.jpg" alt="">
+						</div>
+						
+						<p>iphoneX(尊贵铂金)</p>
+						<p>积分：999</p>
+						<p>市场参考价：9999.00</p>
 					</div>
-					
-					<p>iphoneX(尊贵铂金)</p>
-					<p>积分：999</p>
-					<p>市场参考价：9999.00</p>
+					<div class="list2">
+						<div>
+							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546077790483&di=716de166c55fe352462ca970809e926f&imgtype=0&src=http%3A%2F%2Fi1.hexunimg.cn%2F2016-03-15%2F182772684.jpg" alt="">
+						</div>
+						<p>花费充值卡</p>
+						<p>积分：100.00</p>
+						<p>市场参考价：9999.00</p>
+					</div>
 				</div>
-				<div class="list2">
-					<div>
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546077790483&di=716de166c55fe352462ca970809e926f&imgtype=0&src=http%3A%2F%2Fi1.hexunimg.cn%2F2016-03-15%2F182772684.jpg" alt="">
+				<div class="item1 clearfix">
+					<div class="list1">
+						<div>
+							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
+						</div>
+						<p>烟斗(小号)</p>
+						<p>积分：9999</p>
+						<p>市场参考价：9999.00</p>
 					</div>
-					<p>花费充值卡</p>
-					<p>积分：100.00</p>
-					<p>市场参考价：9999.00</p>
+					<div class="list1">
+						<div>
+							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
+						</div>
+						<p>烟斗(中号)</p>
+						<p>积分：9999</p>
+						<p>市场参考价：9999.00</p>
+					</div>
+					<div class="list1">
+						<div>
+							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
+						</div>
+						<p>烟斗(大号)</p>
+						<p>积分：9999</p>
+						<p>市场参考价：9999.00</p>
+					</div>
 				</div>
 			</div>
-    		<div v-show="tabId===1" class="item1">
-    			<div class="list1">
-					<div>
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
-					</div>
-					<p>烟斗(小号)</p>
-					<p>积分：9999</p>
-					<p>市场参考价：9999.00</p>
-				</div>
-				<div class="list1">
-					<div>
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
-					</div>
-					<p>烟斗(中号)</p>
-					<p>积分：9999</p>
-					<p>市场参考价：9999.00</p>
-				</div>
-				<div class="list1">
-					<div>
-						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
-					</div>
-					<p>烟斗(大号)</p>
-					<p>积分：9999</p>
-					<p>市场参考价：9999.00</p>
-				</div>
-    		</div>
-			
 		</div>
 
 	</div>
@@ -72,7 +73,7 @@ export default {
   name: 'Integral',
   data(){
   	return{
-  		tabId:1
+  		tabId:0
   	}
   },
  
@@ -96,6 +97,10 @@ export default {
 		box-sizing: border-box;
 		font-size: 0.3rem;
 		color: darkgreen;
+	}
+	.item1{
+		width: 50%;
+		float: left;
 	}
 	.list1 div{
 		width: 4rem;
@@ -124,6 +129,10 @@ export default {
 	.fl{
 		float: left;
 	}
+	.exchange{
+		position: relative;
+		background: rgba(0,0,0,.1)
+	}
 	.exchange a{
 		text-decoration: none;
 		color: black;
@@ -131,10 +140,21 @@ export default {
 		width: 50%;
 		height: 1.5rem;
 		line-height: 1.5rem;
-		background-color: #ccc;
+		opacity: .7;
 		font-size: 0.3rem;
 		box-sizing: border-box;
 		text-align: center;
+	}
+	.exchange div{
+		width: 50%;
+		height: 1.5rem;
+		line-height: 1.5rem;
+		box-sizing: border-box;
+		border-bottom: 2px solid red;
+		position: absolute;
+		left: 0;
+		top: 0;
+		/* z-index: -1; */
 	}
 	.exchange .active{
 		border-bottom: 2px solid red;
@@ -161,6 +181,12 @@ export default {
 		text-indent: 0.1rem;
 		font-size: 0.2rem;
 	}
+	.outNode{
+		overflow: hidden;
+		min-height: 15.03125rem ;
+		position: relative;
+	}
+
 	.outNode p{
 		line-height: 0.5rem;
 	}

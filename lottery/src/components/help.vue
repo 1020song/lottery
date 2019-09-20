@@ -87,13 +87,14 @@ export default {
 }
 .help {
   width: 10rem /* 640/64 */;
+  padding-top: .3125rem /* 20/64 */;
 }
 header {
   width: 100%;
   height: 1.5625rem /* 100/64 */;
   line-height: 1.5625rem;
   color: #fff;
-  font-size: 20px;
+  font-size: .359375rem /* 23/64 */;
   padding-left: 0.46875rem /* 30/64 */;
   box-sizing: border-box;
   background: #08533c;
@@ -105,18 +106,15 @@ header {
   padding: 0 20px 0.78125rem 20px;
   box-sizing: border-box;
 }
-.rules_div {
-  height: 300px;
-}
-.red_rules_div {
-}
 .rules_p1 {
   color: red;
   margin: 10px 0 5px;
-  font-size: 16px;
+  font-size: .4125rem /* 20/64 */;
+  font-weight: 600;
 }
 .rules_p2 {
   margin-bottom: 16px;
+  font-size: .3125rem /* 20/64 */;
 }
 
 table {
@@ -138,5 +136,6 @@ table tr > td {
   padding: 5px;
   text-align: center;
   min-width: 6em;
+  font-size: .3125rem /* 20/64 */;
 }
 </style>
