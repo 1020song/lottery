@@ -46,20 +46,24 @@ router.post('/in', function(req, res) {
 		})
 	} else {
 		json.pass = md5(json.pass)
-		// var data =''
+		var data =''
+		var img = ''
 		var user_type = false
 		var vip = eval(fs.readFileSync('./datalist/login.txt','utf8')) 
 		for(var i = 0; i < vip.length; i++) {
 			if(vip[i].user == json.user && vip[i].pass == json.pass) {
 				user_type = true
-				data = json.url
+				data = vip[i].user
+				img = vip[i].img_url
+				
 			}
 		}
 		if(user_type) {
 			res.send({
 				type: 'yes',
 				data: '登录成功',
-				// url:data
+				url:img,
+				datas:data
 			})
 		} else {
 			res.send({
