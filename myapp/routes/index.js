@@ -3,7 +3,7 @@ var router = express.Router();
 var cheerio = require('cheerio')
 var https = require('https')
 var fs = require('fs')
-
+console.log(1)
 /* GET home page. */
 var h = 'https://kuai3.cjcp.com.cn/beijing/'
 function run() {
@@ -14,7 +14,7 @@ function run() {
 		});
 		res.on("end", function () {
 			var $ = cheerio.load(html)
-			x_dom($)
+      x_dom($)
 		})
 	});
 }
