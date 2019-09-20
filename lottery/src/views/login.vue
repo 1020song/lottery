@@ -41,7 +41,7 @@ export default {
       type: false,
       json_log: {
         user: "",
-        pass: ""
+        pass: "",
       },
       json_zhu: {
         user: "",
@@ -71,9 +71,13 @@ export default {
           alert('请输入密码')
         }else if(data.data.type=='no'){
           alert(data.data.data)
-          this.json_log = ''
+          this.json_log.user = ''
+          this.json_log.pass = ''
         }else{
-          alert(data.data.data)
+          console.log(data)
+          this.json_log.user = ''
+          this.json_log.pass = ''
+          this.$router.push({name:'home',params:{name:data}})
         }
       })
     },
@@ -86,8 +90,11 @@ export default {
           alert('请输入密码')
         }else if(data.data.type=='no'){
           alert(data.data.data)
-          this.json_zhu = ''
+          this.json_zhu.user = ''
+          this.json_zhu.pass = ''
         }else{
+          this.json_zhu.user = ''
+          this.json_zhu.pass = ''
           alert(data.data.data)
         }
         
