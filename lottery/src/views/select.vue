@@ -251,26 +251,24 @@ export default {
 						}
 					})
 			}else{
-				e.path.forEach(Element=>{
-			if(Element.className=='btns'){
-				Element.className='btns active'
-				// 判断点击个数 num
-				if(this.types==this.type_btns[0]){
-					this.datas.zhu++
-					this.datas.jin+=2
-				}	
-			}else if(Element.className=='btns active'){
-				Element.className='btns'
-				// 判断点击个数 num
-				if(this.types==this.type_btns[0]){
-					this.datas.zhu--
-					this.datas.jin-=2
-				}	
-			}
-		})
-		}
-		
-			
+			e.path.forEach(Element=>{
+				if(Element.className=='btns'){
+					Element.className='btns active'
+					// 判断点击个数 num
+					if(this.types==this.type_btns[0]){
+						this.datas.zhu++
+						this.datas.jin+=2
+					}	
+				}else if(Element.className=='btns active'){
+					Element.className='btns'
+					// 判断点击个数 num
+					if(this.types==this.type_btns[0]){
+						this.datas.zhu--
+						this.datas.jin-=2
+					}	
+				}
+			})
+		}	
 	}
 }
 }
