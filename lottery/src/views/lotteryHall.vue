@@ -84,7 +84,8 @@
 		
 	}
 	.tab>div a{
-		color: orange
+		color: orange;
+		display: block;
 	}
 	.tab{
 		display: flex;
@@ -92,7 +93,7 @@
 	}
 	.tab>div{
 		flex: 1;
-		line-height: .46875rem /* 30/64 */;
+		line-height: .625rem /* 40/64 */;
 		text-align: center;
 	}
 	.tit{
@@ -111,7 +112,6 @@
 	.tit dl dd{
 		font-size: .46875rem /* 30/64 */
 	}
-
 	.tit dl{
 		display: inline-block;
 		width: 50%;

@@ -41,7 +41,7 @@ export default {
       type: false,
       json_log: {
         user: "",
-        pass: ""
+        pass: "",
       },
       json_zhu: {
         user: "",
@@ -65,13 +65,38 @@ export default {
     login() {
       this.$axios.post('/users/in',this.json_log)
       .then(data=>{
-        console.log(data);
+        if(!this.json_log.user){
+          alert('请输入账号')
+        }else if(!this.json_log.pass){
+          alert('请输入密码')
+        }else if(data.data.type=='no'){
+          alert(data.data.data)
+          this.json_log.user = ''
+          this.json_log.pass = ''
+        }else{
+          console.log(data)
+          this.json_log.user = ''
+          this.json_log.pass = ''
+          this.$router.push({name:'home',params:{name:data}})
+        }
       })
     },
     zhu() {
       this.$axios.post('/users/up',this.json_zhu)
       .then(data=>{
-        console.log(data);
+        if(!this.json_zhu.user){
+          alert('请输入账号')
+        }else if(!this.json_zhu.pass){
+          alert('请输入密码')
+        }else if(data.data.type=='no'){
+          alert(data.data.data)
+          this.json_zhu.user = ''
+          this.json_zhu.pass = ''
+        }else{
+          this.json_zhu.user = ''
+          this.json_zhu.pass = ''
+          alert(data.data.data)
+        }
         
       })
     }
