@@ -13,6 +13,13 @@ import continues from './components/continue.vue' // 继续选号
 import help from './components/help.vue' // 帮助
 
 import login from './views/login.vue'
+// 插件
+import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+Vue.use(MdButton)
+Vue.use(MdContent)
+Vue.use(MdTabs)
 Vue.use(Router)
 
 export default new Router({

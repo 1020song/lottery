@@ -6,7 +6,7 @@
 				玩法:{{types}} >
 				<!-- 下拉 -->
 				<ul class="selects" v-show="typebtns">
-					<li v-for="i in type_btns" @click="types=i">{{i}}</li>
+					<li v-for="(i,$index) in type_btns" @click="types=i" :key="$index">{{i}}</li>
 				</ul>
 			</div>
 			<!-- 说明按钮 -->
@@ -16,23 +16,27 @@
 		<div style="padding:.1rem;text-align: center;" v-if="types==type_btns[0]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖号码相加的和</p>
 			<div>
-				<div class="btns" v-for="(i,$index) in btn.H_num[0]" @click="btns($event)" :key="$index">
-					<dl>
+				<div class="btns" v-for="(i,$index) in btn.H_num[0]" @click="btns($event)" :key="$index +new Date">
+					<md-button>
+						<dl>
 						<dt>{{i}}</dt>
 						<dd style="font-size:.2rem">奖励{{btn.H_num[1][$index]}}积分</dd>
-					</dl>
+						</dl>
+					</md-button>
 				</div>
 			</div>
 		</div>
 		<!-- 三同号 -->
-		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[1]">
+		<div style="text-align: center;padding:.1rem" v-else-if="types==type_btns[1]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜中豹子号(三个相同号)</p>
 			<div>
-				<div class="btns" v-for="(i,$index) in btn.threeT_num[0]" @click="btns($event)" :key="$index">
-					<dl>
-						<dt>{{i}}</dt>
-						<dd style="font-size:.2rem">奖励240积分</dd>
-					</dl>
+				<div class="btns" v-for="(i,$index) in btn.threeT_num[0]" @click="btns($event)" :key="$index +new Date">
+					<md-button>
+						<dl>
+							<dt>{{i}}</dt>
+							<dd style="font-size:.2rem">奖励240积分</dd>
+						</dl>
+					</md-button>
 				</div>
 			</div>
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜中豹子号(三个相同号)</p>
@@ -44,42 +48,50 @@
 			</div>
 		</div>
 		<!-- 二同号 -->
-		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[2]">
+		<div style="text-align: center;padding:.1rem" v-else-if="types==type_btns[2]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>选择同号和不同号的组合,奖励80积分</p>
 			<div>
 				<div class="T">
 					<p style="color:#93b3a9">同号</p>
-					<div class="btns" v-for="i in btn.twoT_num[0]" @click="btns($event)">
-						<dl>
-							<dt style="line-height:.6rem;">{{i}}</dt>
-						</dl>
+					<div class="btns" v-for="(i,$index) in btn.twoT_num[0]" :key="$index +new Date" @click="btns($event,$index)">
+						<md-button>
+							<dl>
+								<dt style="line-height:.6rem;">{{i}}</dt>
+							</dl>
+						</md-button>
 					</div>
 				</div>
 				<div class="B">
 					<p style="color:#93b3a9">不同号</p>
 					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" @click="btns($event,$index)">
-						<dl>
-							<dt style="line-height:.6rem;">{{i}}</dt>
-						</dl>
+						<md-button>
+							<dl>
+								<dt style="line-height:.6rem;">{{i}}</dt>
+							</dl>
+						</md-button>
 					</div>
 				</div>
 				<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的相同号码，奖励15积分</p>
 				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" @click="btns($event)">
-					<dl>
-						<dt style="line-height:.6rem;">{{i}}</dt>
-					</dl>
+					<md-button>
+						<dl>
+							<dt style="line-height:.6rem;">{{i}}</dt>
+						</dl>
+					</md-button>
 				</div>
 			</div>
 			
 		</div>
 		<!-- 三不同 -->
-		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[3]">
+		<div style="text-align: center;padding:.1rem" v-else-if="types==type_btns[3]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖的三个不同号码，奖励40积分</p>
 			<div>
-				<div class="btns" v-for="i in btn.threeB_num" @click="btns($event)">
-					<dl>
-						<dt style="line-height:.6rem">{{i}}</dt>
-					</dl>
+				<div class="btns" v-for="(i,$index) in btn.threeB_num" :key="$index +new Date" @click="btns($event)">
+					<md-button>
+						<dl>
+							<dt style="line-height:.6rem">{{i}}</dt>
+						</dl>
+					</md-button>
 				</div>
 			</div>
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>123,234,345,456，任一开出即中10积分</p>
@@ -90,13 +102,15 @@
 			</div>
 		</div>
 		<!-- 二不同 -->
-		<div style="text-align: center;padding:.1rem" v-if="types==type_btns[4]">
+		<div style="text-align: center;padding:.1rem" v-else-if="types==type_btns[4]">
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的不同号码，奖励8积分</p>
 			<div>
-				<div class="btns" v-for="i in btn.twoB_num" @click="btns($event)">
-					<dl>
-						<dt style="line-height:.6rem">{{i}}</dt>
-					</dl>
+				<div class="btns" v-for="(i,$index) in btn.twoB_num" :key="$index + new Date" @click="btns($event)">
+					<md-button>
+						<dl>
+							<dt style="line-height:.6rem">{{i}}</dt>
+						</dl>
+					</md-button>
 				</div>
 			</div>
 		</div>
@@ -117,9 +131,12 @@
 	left: 0;
 	z-index: 99;
 }
-.btns .active{
+.active{
 	outline: .03125rem /* 2/64 */ solid orange;
-	color: orange
+	
+}
+.active *{
+color: orange
 }
 .btns dl{
 	width: 100% ;
@@ -133,7 +150,6 @@
     line-height: 1.2;
 	box-sizing: border-box;
     border-width: 2px;
-    color: #fff;
 	width: 30%;
 	border-radius: .0625rem /* 4/64 */;
     border-color: #229474;
@@ -221,43 +237,40 @@ export default {
 			if(this.types== this.type_btns[2]){
 				var tDiv= document.querySelectorAll('.T .btns')
 				var bDiv= document.querySelectorAll('.B .btns')
-				if(tDiv!='' || bDiv != ''){
-				for(var i=0;i<tDiv.length;i++){
-					var tDl = tDiv[i].querySelector('dl')
-					var bDl = bDiv[i].querySelector('dl')
-					if(e.toElement.parentNode.className==''){
-						if(tDl==e.toElement.parentNode){
-							console.log(tDl)
-							e.toElement.parentNode.className='active'
-							bDl.className=''
-							if(e.toElement.parentNode.className!=-1){
-								e.toElement.parentNode.className=''
+					e.path.forEach(Element=>{
+						if(Element.className == 'btns'){
+							console.log(Element.parentNode)
+							Element.className='btns active'
+							if(Element.parentNode.className=='T'){
+								bDiv[index].className='btns'
+							}else if(Element.parentNode.className=='B'){
+								tDiv[index].className='btns'
 							}
-						}else if(bDl==e.toElement.parentNode){
-							console.log(bDl)
-							e.toElement.parentNode.className='active'
-							tDl.className=''
-							if(e.toElement.parentNode.className!=-1){
-								e.toElement.parentNode.className=''
-							}
+						}else if(Element.className == 'btns active'){
+							Element.className='btns'
 						}
-					}
-				}
-			}
-		}
-		if(e.toElement.parentNode.className==''){
-			e.toElement.parentNode.className='active'
+					})
+			}else{
+				e.path.forEach(Element=>{
+			if(Element.className=='btns'){
+				Element.className='btns active'
 				// 判断点击个数 num
 				if(this.types==this.type_btns[0]){
 					this.datas.zhu++
 					this.datas.jin+=2
-					console.log(this.datas)
 				}	
-		}else{
-			e.toElement.parentNode.className=''
-			this.datas.zhu--
-			this.datas.jin-=2
+			}else if(Element.className=='btns active'){
+				Element.className='btns'
+				// 判断点击个数 num
+				if(this.types==this.type_btns[0]){
+					this.datas.zhu--
+					this.datas.jin-=2
+				}	
+			}
+		})
 		}
+		
+			
 	}
 }
 }
