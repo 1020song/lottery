@@ -86,11 +86,13 @@ export default {
       return hour;
     },
     is() {
-      this.datas = this.$route.params.name;
-      localStorage.user = this.datas.data.datas;
-      localStorage.picture = this.datas.data.url;
-      this.user = localStorage.user;
-      this.picture = localStorage.picture;
+      // this.datas = this.$route.params.name;
+      if(localStorage.user){
+        // localStorage.user = this.datas.data.datas;
+        // localStorage.picture = this.datas.data.url;
+        this.user = localStorage.user;
+        this.picture = localStorage.picture;
+      }
     }
   }
 };

@@ -63,7 +63,7 @@
 				</div>
 				<div class="B">
 					<p style="color:#93b3a9">不同号</p>
-					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" @click="btns($event,$index)">
+					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" @click="btns($event,$index)" :key="$index">
 						<md-button>
 							<dl>
 								<dt style="line-height:.6rem;">{{i}}</dt>
@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的相同号码，奖励15积分</p>
-				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" @click="btns($event)">
+				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" @click="btns($event)" :key='index'>
 					<md-button>
 						<dl>
 							<dt style="line-height:.6rem;">{{i}}</dt>
@@ -116,101 +116,6 @@
 		</div>
 	</div>
 </template>
-<style scoped>
-.selects li{
-	line-height: 1rem;
-	color: black;
-	padding: 0 .15625rem /* 10/64 */;
-	font-size: .25rem /* 16/64 */;
-	border-bottom: .015625rem /* 1/64 */ solid gainsboro
-}
-.selects{
-	position: absolute;
-	width: 100%;
-	background: #fff;
-	left: 0;
-	z-index: 99;
-}
-.active{
-	outline: .03125rem /* 2/64 */ solid orange;
-	
-}
-.active *{
-color: orange
-}
-.btns dl{
-	width: 100% ;
-	height: 100% ;
-	padding: 0.2rem 0;
-}
-.btns{
-	display: inline-block;
-    margin: 5px;
-	border:.03125rem /* 2/64 */ solid gainsboro;
-    line-height: 1.2;
-	box-sizing: border-box;
-    border-width: 2px;
-	width: 30%;
-	border-radius: .0625rem /* 4/64 */;
-    border-color: #229474;
-    background-color: #08533c!important;
-}
-.sj:before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    border-left: .15625rem solid #169967;
-    border-right: 0 solid #169967;
-    border-top: .15625rem solid transparent;
-    border-bottom: .15625rem solid transparent;
-    right: -.15625rem /* 10/64 */;
-	top: 0;
-}
-.sj{
-	color: #89dec1;
-    background-color: grey;
-    display: inline-block;
-    height: .3125rem /* 20/64 */;
-	line-height: .3125rem;
-    padding: 0 .078125rem /* 5/64 */;
-    margin-right: .21875rem /* 14/64 */;
-    vertical-align: middle;
-    border-radius: .03125rem /* 2/64 */;
-    background-color: #169967;
-    position: relative;
-}
-.contain{
-	padding: 0 .3125rem /* 20/64 */
-}
-.info_btn{
-	float: right;
-	width: .375rem /* 24/64 */;
-	height: .375rem /* 24/64 */;
-	border-radius: 50%;
-	text-align: center;
-	margin-top: .3125rem /* 20/64 */;
-	line-height: .375rem;
-	
-	border: .03125rem /* 2/64 */ solid white
-}
-.info_btn a{
- color: white;
-}
-.type-tit{
-	text-align: left
-}
-.type-tit .btn{
-	position: relative;
-	background: #169967;
-	display: inline-block;
-	line-height: .46875rem /* 30/64 */;
-	padding: .15625rem /* 10/64 */;
-	color: white;
-	font-weight: 600;
-	margin: .15625rem /* 10/64 */ .3125rem /* 20/64 */;
-	border-radius: .0625rem /* 4/64 */
-}
-</style>
 <script>
 export default {
 	data() {
@@ -273,3 +178,105 @@ export default {
 }
 }
 </script>
+<style>
+	.md-button{
+		min-width: 2.1875rem /* 140/64 */ !important;
+		height: .90625rem /* 58/64 */ !important;
+		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
+		margin: 0 !important;
+	}
+</style>
+<style scoped>
+.selects li{
+	line-height: 1rem;
+	color: black;
+	padding: 0 .15625rem /* 10/64 */;
+	font-size: .25rem /* 16/64 */;
+	border-bottom: .015625rem /* 1/64 */ solid gainsboro
+}
+.selects{
+	position: absolute;
+	width: 100%;
+	background: #fff;
+	left: 0;
+	z-index: 99;
+}
+.active{
+	border: .046875rem /* 3/64 */AXWauAZcxkduh b solid orange !important;
+	
+}
+.active *{
+color: orange
+}
+.btns dl{
+	width: 100% ;
+	height: 100% ;
+	padding: 0.2rem 0;
+}
+.btns{
+	display: inline-block;
+    margin: 5px;
+	border:.03125rem /* 2/64 */ solid gainsboro;
+    line-height: 1.2;
+	box-sizing: border-box;
+    border-width: 2px;
+	border-radius: .0625rem /* 4/64 */;
+    border-color: #229474;
+    background-color: #08533c!important;
+}
+.sj:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    border-left: .15625rem solid #169967;
+    border-right: 0 solid #169967;
+    border-top: .15625rem solid transparent;
+    border-bottom: .15625rem solid transparent;
+    right: -.15625rem /* 10/64 */;
+	top: 0;
+}
+.sj{
+	color: #89dec1;
+    background-color: grey;
+    display: inline-block;
+    height: .3125rem /* 20/64 */;
+	line-height: .3125rem;
+    padding: 0 .078125rem /* 5/64 */;
+    margin-right: .21875rem /* 14/64 */;
+    vertical-align: middle;
+    border-radius: .03125rem /* 2/64 */;
+    background-color: #169967;
+    position: relative;
+}
+.contain{
+	padding: 0 .3125rem /* 20/64 */
+}
+.info_btn{
+	float: right;
+	width: .375rem /* 24/64 */;
+	height: .375rem /* 24/64 */;
+	border-radius: 50%;
+	text-align: center;
+	margin-top: .3125rem /* 20/64 */;
+	line-height: .375rem;
+	
+	border: .03125rem /* 2/64 */ solid white
+}
+.info_btn a{
+ color: white;
+}
+.type-tit{
+	text-align: left
+}
+.type-tit .btn{
+	position: relative;
+	background: #169967;
+	display: inline-block;
+	line-height: .46875rem /* 30/64 */;
+	padding: .15625rem /* 10/64 */;
+	color: white;
+	font-weight: 600;
+	margin: .15625rem /* 10/64 */ .3125rem /* 20/64 */;
+	border-radius: .0625rem /* 4/64 */
+}
+</style>

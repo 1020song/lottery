@@ -77,7 +77,9 @@ export default {
           console.log(data)
           this.json_log.user = ''
           this.json_log.pass = ''
-          this.$router.push({name:'home',params:{name:data}})
+          this.$router.push({name:'home'})
+          localStorage.user = data.data.datas;
+          localStorage.picture = data.data.url;
         }
       })
     },
