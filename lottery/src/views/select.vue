@@ -202,7 +202,7 @@ export default {
 	z-index: 99;
 }
 .active{
-	border: .046875rem /* 3/64 */AXWauAZcxkduh b solid orange !important;
+	border: .046875rem solid orange !important;
 	
 }
 .active *{
