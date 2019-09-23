@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的相同号码，奖励15积分</p>
-				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" :key="$index +new Date" @click="btns($event)">
+				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" :key="index +new Date" @click="btns($event)">
 					<md-button>
 						<dl>
 							<dt style="line-height:.6rem;">{{i}}</dt>
@@ -184,8 +184,8 @@ export default {
 </script>
 <style>
 	.md-button{
-		min-width: 2.1875rem /* 140/64 */ !important;
-		height: .90625rem /* 58/64 */ !important;
+		width: 100% !important;
+		height: 1.2rem /* 58/64 */ !important;
 		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
 		margin: 0 !important;
 	}
