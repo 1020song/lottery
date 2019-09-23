@@ -23,7 +23,12 @@
 			</div>
 		</div>
 		<!-- contain -->
+		<transition name="add" v-if="Is">
 			<keep-alive><router-view></router-view></keep-alive>
+		</transition>
+		<transition name="del" v-else>
+			<keep-alive><router-view></router-view></keep-alive>
+		</transition>
 		<!-- footer -->
 		<div class="footer">
 			<div class="l_box">
@@ -37,31 +42,62 @@
 	</div>
 </template>
 <style scoped>
+/* contain 动画效果 */
+.router-link-active{
+	color: orange
+}
+.add-leave{
+	opacity: 1;
+}
+/* 离开时的状态 */
+.add-leave-active{
+	transition: all 1s;
+}
+/* 离开后 */
+.add-leave-to{
+transform: translateX(-100%);
+}
+
+/* 进入时 */
+.add-enter{
+transform: translateX(100%);
+}
+/* 进入时的状态 */
+.add-enter-active{
+	transition: all 1s;
+}
+/* 进入后 */
+.add-enter-to{
+	transform: translateX(0);
+}
+
+.del-leave{
+	opacity: 1;
+}
+.del-leave-active{
+	transition: all 1s;
+}
+.del-leave-to{
+	transform: translateX(100%);
+}
+
+
+.del-enter{
+	transform: translateX(-100%);
+}
+.del-enter-active{
+	transition: all 1s;
+}
+.del-enter-to{
+	transform: translateX(0);
+}
 .contain{
 	box-sizing: border-box;
 	position: fixed;
 	height: 100%;
 	width: 100%;
-	background: #297a62;
+	background: #077552;
 }
-	.tab-enter-active{
-		transition: opacity 1.5s;
-		transform: translateX(0);
-		opacity: 1;
-	}
-	.tab-enter{
-		opacity: 1;
-		transform: translateX(0 /* 200/64 */)
-	}
-	.tab-leave-active{
-		transition: opacity 1.5s;
-		opacity: 0;
-		transform: translateX(-10rem /* 200/64 */)
-	}
-	.tab-leave{
-		opacity: 0;
-		transform: translateX(-10rem /* 200/64 */)
-	}
 	.footer{
 		position: fixed;
 		bottom: 0;
@@ -81,15 +117,18 @@
 	}
 	.tab .avtive{
 		border-bottom: .05rem /* 1/64 */ solid orange;
-		
+	}
+	.tab .avtive a{
+		color: #ffab00 !important;
 	}
 	.tab>div a{
-		color: orange;
+		color: #ffc107;
 		display: block;
+		
 	}
 	.tab{
 		display: flex;
-		background: #48b892;
+		background: #169967;
 	}
 	.tab>div{
 		flex: 1;
@@ -143,9 +182,10 @@ export default {
 			str--
 			this.$nextTick(()=>{
 				if(this.second=='00'){
-					this.minute--
 					str=59
 					if(this.minute==0) this.minute=10
+					this.minute--
+					
 				}
 				this.second=add(str)
 			})
