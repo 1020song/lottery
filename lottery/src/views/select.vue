@@ -10,7 +10,7 @@
 				</ul>
 			</div>
 			<!-- 说明按钮 -->
-			<div class="info_btn"><router-link to="/">?</router-link></div>
+			<div class="info_btn"><router-link to="/help">?</router-link></div>
 		</div>
 		<!-- 和值 -->
 		<div style="padding:.1rem;text-align: center;" v-if="types==type_btns[0]">

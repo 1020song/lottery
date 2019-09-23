@@ -5,12 +5,13 @@
       <div class="tit">
         <h3>{{tartTime()<6?'早上好！朋友':tartTime()>6&&tartTime()<11?'上午好！朋友':tartTime()>11&&tartTime()<14?'中午好！朋友':tartTime()>14&&tartTime()<17?'下午好！朋友':tartTime()>17&&tartTime()<24?'晚上好！朋友':''}}</h3>
         <div class="login">
-          <router-link to class="bg_img">
+          <router-link to='/login' class="bg_img">
             <!--            用户信息-->
             <span class="iconfont" v-show="!type">&#xe601;</span>
-            <img :src="picture" alt style="width:65px;height:65px;border-radius:50%" v-show="type">
-            <p class="username">{{user}}</p>
+            <p class="username" v-show="!type">用户名</p>
           </router-link>
+            <img :src="picture" alt style="width:65px;height:65px;border-radius:50%" v-show="type">
+            <p class="username" v-show="type">{{user}}</p>
         </div>
         <!--        兑换-->
         <div class="operate">
@@ -30,7 +31,7 @@
         <router-link
           tag="div"
           class="router_link"
-          to
+          to='/lotteryHall'
           v-for="(i, index) in arr"
           :class="{hebei:index!=0}"
           :key="index"
@@ -72,11 +73,16 @@ export default {
   created() {
     this.user = localStorage.user;
     this.picture = localStorage.picture;
-    if (this.user != "") {
+    if(localStorage.user&&localStorage.picture){
       this.type = true;
-    } else {
+    }else{
       this.type = false;
     }
+    // if (this.user != "") {
+    //   this.type = true;
+    // } else {
+    //   this.type = false;
+    // }
     this.is()
   },
   methods: {
@@ -98,6 +104,9 @@ export default {
 };
 </script>
 <style scoped>
+a{
+  text-decoration: none !important;
+}
 .home {
   text-align: center;
   height: 100%;
@@ -124,6 +133,7 @@ export default {
 }
 .bg_img span {
   font-size: 1.65rem;
+  line-height: 2rem;
 }
 .username {
   padding: 0.3125rem 0;
