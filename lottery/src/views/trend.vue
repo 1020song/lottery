@@ -13,7 +13,7 @@
 			</thead>
 		</table>
 		<div style="padding-top:.5rem">
-	<table>
+			<table>
 				<tbody>
 					<tr v-for="(i,$index) in arrList[0]" :key="$index" :style="{background:$index%2!=1?'#08533c':'#0b5f45','margin-top':$index==0?'1rem':'0'}">
 						<td>{{i}}期</td>
@@ -24,7 +24,7 @@
 							<span :class="{active:j==parseInt(arrList[1][$index][0]) || j==parseInt(arrList[1][$index][1]) || j==parseInt(arrList[1][$index][2])}">
 								{{j}}
 								<!-- 蓝色小圆圈 -->
-								<div class="blue_two" v-if="(arrList[1][$index][0]==arrList[1][$index][1] && j==arrList[1][$index][1] || arrList[1][$index][1]==arrList[1][$index][2] && j==arrList[1][$index][1])">2</div>	
+								<div class="blue_two" v-for="(t,p) in bnum"  :key="p" v-if="(arrList[1][$index][0]==arrList[1][$index][1] && j==arrList[1][$index][1] || arrList[1][$index][1]==arrList[1][$index][2] && j==arrList[1][$index][1])">{{t}}</div>	
 							</span>
 						</td>
 					</tr>
@@ -89,7 +89,8 @@ export default {
 	data() {
 		return {
 			lottery:'',
-			arrList:[]
+			arrList:[],
+			bnum:[]
 		}
 	},
 	created() {
@@ -105,10 +106,18 @@ export default {
 					if(e != 0) mx += parseInt(e)
 				})
 				max.push(mx>=10?'大':'小')
+				// 蓝色小圆圈
+				var arrs = element.prizeNum.split(',')
+				arrs .forEach((ele,$index)=>{
+					if(ele ==arrs[$index+2]){
+						this.bnum.push('3'+$index)
+					}else if(ele == arrs[$index+1]){
+						this.bnum.push('2')
+					}
+				})
+
 			});
-			
 			this.arrList.push(qishu,prizeNum,sum,max,san)
-			console.log(this.arrList[1])
 		})
 	},
 }

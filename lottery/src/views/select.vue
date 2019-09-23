@@ -55,7 +55,7 @@
 			<div>
 				<div class="T">
 					<p style="color:#93b3a9">同号</p>
-					<div class="btns" v-for="(i,$index) in btn.twoT_num[0]" :key="$index +new Date" @click="btns($event,$index)">
+					<div class="btns" v-for="(i,$index) in btn.twoT_num[0]" :key="$index + new Date" @click="btns($event,$index)">
 						<md-button>
 							<dl>
 								<dt style="line-height:.6rem;">{{i}}</dt>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="B">
 					<p style="color:#93b3a9">不同号</p>
-					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" :key="$index +new Date" @click="btns($event,$index)">
+					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" :key="$index + new Date" @click="btns($event,$index)">
 						<md-button>
 							<dl>
 								<dt style="line-height:.6rem;">{{i}}</dt>
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的相同号码，奖励15积分</p>
-				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" :key="$index +new Date" @click="btns($event)">
+				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" :key="index +new Date" @click="btns($event)">
 					<md-button>
 						<dl>
 							<dt style="line-height:.6rem;">{{i}}</dt>
