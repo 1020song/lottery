@@ -5,7 +5,7 @@ var router = express.Router();
 
 /*注册*/
 router.post('/up', function (req, res) {
-	var json = req.body
+	var json = req.body.data
 	if (json.user == '' || json.pass == '') {
 		res.send({
 			type: 'no',
