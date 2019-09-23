@@ -32,8 +32,8 @@
 		<!-- footer -->
 		<div class="footer">
 			<div class="l_box">
-				<span style="color:white" >共0注</span>
-				<span style="color:orange">0模拟金</span>
+				<span style="color:white" >共{{$store.state.order.zhu}}注</span>
+				<span style="color:orange">{{$store.state.order.jin}}模拟金</span>
 			</div>
 			<div class="r_box">
 				<span style="color:white;font-size:.3rem">确定</span>

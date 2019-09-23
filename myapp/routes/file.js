@@ -2,9 +2,9 @@ const express = require('express')
 const multer = require('multer')
 const fs = require('fs')
 const router = express.Router()
-
+      
 router.use(multer({dest:'./public/file/'}).any())
-
+   
 
 router.post('/files',(req,res)=>{
 	var files = req.files[0]

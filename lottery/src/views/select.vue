@@ -10,7 +10,7 @@
 				</ul>
 			</div>
 			<!-- 说明按钮 -->
-			<div class="info_btn"><router-link to="/">?</router-link></div>
+			<div class="info_btn"><router-link to="/help">?</router-link></div>
 		</div>
 		<!-- 和值 -->
 		<div style="padding:.1rem;text-align: center;" v-if="types==type_btns[0]">
@@ -120,6 +120,76 @@
 		</div>
 	</div>
 </template>
+<script>
+export default {
+	data() {
+		return {
+			btns_num:0,
+			types:'和值',
+			typebtns:false,
+			type_btns:['和值','三同号','二同号','三不同','二不同'],
+			datas:{
+				zhu:0,
+				jin:0
+			},
+			btn:{
+				H_num:[[4,5,6,7,8,9,10,11,12,13,14,15,16,17],[80,40,25,16,12,10,9,9,10,12,16,25,40,80]],
+				threeT_num:[[111,222,333,444,555,666]],
+				twoT_num:[[11,22,33,44,55,66],[1,2,3,4,5,6],['11*','22*','33*','44*','55*','66*']],
+				threeB_num:[1,2,3,4,5,6],
+				twoB_num:[1,2,3,4,5,6]
+			}
+		}
+	},
+	methods: {
+		btns(e,index){
+			if(this.types== this.type_btns[2]){
+				var tDiv= document.querySelectorAll('.T .btns')
+				var bDiv= document.querySelectorAll('.B .btns')
+					e.path.forEach(Element=>{
+						if(Element.className == 'btns'){
+							console.log(Element.parentNode)
+							Element.className='btns active'
+							if(Element.parentNode.className=='T'){
+								bDiv[index].className='btns'
+							}else if(Element.parentNode.className=='B'){
+								tDiv[index].className='btns'
+							}
+						}else if(Element.className == 'btns active'){
+							Element.className='btns'
+						}
+					})
+			}else{
+			e.path.forEach(Element=>{
+				if(Element.className=='btns'){
+					Element.className='btns active'
+					// 判断点击个数 num
+					if(this.types==this.type_btns[0]){
+						this.datas.zhu++
+						this.datas.jin+=2
+					}	
+				}else if(Element.className=='btns active'){
+					Element.className='btns'
+					// 判断点击个数 num
+					if(this.types==this.type_btns[0]){
+						this.datas.zhu--
+						this.datas.jin-=2
+					}	
+				}
+			})
+		}	
+	}
+}
+}
+</script>
+<style>
+	.md-button{
+		min-width: 2.1875rem /* 140/64 */ !important;
+		height: .90625rem /* 58/64 */ !important;
+		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
+		margin: 0 !important;
+	}
+</style>
 <style scoped>
 .selects li{
 	line-height: 1rem;
@@ -136,7 +206,7 @@
 	z-index: 99;
 }
 .active{
-	outline: .03125rem /* 2/64 */ solid orange;
+	border: .046875rem solid orange !important;
 	
 }
 .active *{
@@ -154,7 +224,6 @@ color: orange
     line-height: 1.2;
 	box-sizing: border-box;
     border-width: 2px;
-	width: 30%;
 	border-radius: .0625rem /* 4/64 */;
     border-color: #229474;
     background-color: #08533c!important;
