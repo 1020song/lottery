@@ -184,8 +184,8 @@ export default {
 </script>
 <style>
 	.md-button{
-		min-width: 2.1875rem /* 140/64 */ !important;
-		height: .90625rem /* 58/64 */ !important;
+		width: 100% !important;
+		height: 1.2rem /* 58/64 */ !important;
 		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
 		margin: 0 !important;
 	}
