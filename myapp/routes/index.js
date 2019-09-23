@@ -2,9 +2,13 @@ var express = require('express');
 var router = express.Router();
 var cheerio = require('cheerio')
 var https = require('https')
+var http = require('http')
 var fs = require('fs')
-console.log(1)
 /* GET home page. */
+router.get('/index',(req,res)=>{
+	var json = eval(fs.readFileSync('./datalist/kuaisan.json','utf8'))
+    res.send(json)
+})
 var h = 'https://kuai3.cjcp.com.cn/beijing/'
 function run() {
 	https.get(h, function (res) {
@@ -18,7 +22,8 @@ function run() {
 		})
 	});
 }
-var json = eval(fs.readFileSync('./datalist/kuaisan.txt','utf8'))
+
+var json = eval(fs.readFileSync('./datalist/kuaisan.json','utf8'))
 function x_dom($) {
 	var arr=[]
 	for(var i=0;i<$('#kjinfos1 tr').length;i++){
@@ -34,7 +39,7 @@ function x_dom($) {
 		qi.erbt=$('#kjinfos1 tr').eq(i).find('td').eq(7).text()
 		qi.sanlh=$('#kjinfos1 tr').eq(i).find('td').eq(8).text()
 		arr.push(qi)
-		fs.writeFileSync('./datalist/kuaisan.txt',JSON.stringify(arr),'utf8')
+		fs.writeFileSync('./datalist/kuaisan.json',JSON.stringify(arr),'utf8')
 		console.log(json)
 	}
 }

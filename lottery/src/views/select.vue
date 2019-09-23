@@ -40,11 +40,13 @@
 				</div>
 			</div>
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜中豹子号(三个相同号)</p>
-			<div class="btns" style="width:100%">
+			<div class="btns" style="width:100%" :key="'1' + new Date"  @click="btns($event)">
+				<md-button>
 				<dl style="width:auto;text-align:center">
 					<dt>三同号通选</dt>
 					<dd>任意一个豹子号开出即中40积分</dd>
 				</dl>
+				</md-button>
 			</div>
 		</div>
 		<!-- 二同号 -->
@@ -63,7 +65,7 @@
 				</div>
 				<div class="B">
 					<p style="color:#93b3a9">不同号</p>
-					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" @click="btns($event,$index)">
+					<div class="btns" v-for="(i,$index) in btn.twoT_num[1]" :key="$index +new Date" @click="btns($event,$index)">
 						<md-button>
 							<dl>
 								<dt style="line-height:.6rem;">{{i}}</dt>
@@ -72,7 +74,7 @@
 					</div>
 				</div>
 				<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>猜开奖中的2个指定的相同号码，奖励15积分</p>
-				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" @click="btns($event)">
+				<div class="btns" v-for="(i,index) in btn.twoT_num[2]" :key="$index +new Date" @click="btns($event)">
 					<md-button>
 						<dl>
 							<dt style="line-height:.6rem;">{{i}}</dt>
@@ -95,10 +97,12 @@
 				</div>
 			</div>
 			<p style="text-align:left;color:white;margin-bottom:.2rem"><span class="sj"> {{types}}</span>123,234,345,456，任一开出即中10积分</p>
-			<div class="btns" style="width:100%">
+			<div class="btns" style="width:100%" :key="'1'+ new Date" @click="btns($event)">
+				<md-button>
 				<dl style="width:auto;text-align:center">
 					<dt style="line-height:.6rem">三连号通过</dt>
 				</dl>
+				</md-button>
 			</div>
 		</div>
 		<!-- 二不同 -->
@@ -235,11 +239,11 @@ export default {
 	methods: {
 		btns(e,index){
 			if(this.types== this.type_btns[2]){
+				// 判断是否是二同号
 				var tDiv= document.querySelectorAll('.T .btns')
 				var bDiv= document.querySelectorAll('.B .btns')
 					e.path.forEach(Element=>{
 						if(Element.className == 'btns'){
-							console.log(Element.parentNode)
 							Element.className='btns active'
 							if(Element.parentNode.className=='T'){
 								bDiv[index].className='btns'
