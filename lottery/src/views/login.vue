@@ -81,7 +81,9 @@ export default {
           console.log(data)
           this.json_log.user = ''
           this.json_log.pass = ''
-          this.$router.push({name:'home',params:{name:data}})
+          this.$router.push({name:'home'})
+          localStorage.user = data.data.datas;
+          localStorage.picture = data.data.url;
         }
       }) 
     },
@@ -92,6 +94,8 @@ export default {
           alert('请输入账号')
         }else if(!this.json_zhu.pass){
           alert('请输入密码')
+        }else if(!this.json_zhu.img_url){
+          alert('请选择头像')
         }else if(data.data.type=='no'){
           alert(data.data.data)
           this.json_zhu.user = ''
