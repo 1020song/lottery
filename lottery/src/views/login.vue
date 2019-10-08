@@ -4,13 +4,13 @@
       <div class="content">
         <div class="logins" v-show="type">
           <h2>登录</h2>
-          <div class="si" style="margin-top:59px">
+          <div class="si" style="margin-top:60px">
             <input type="text" placeholder="请输入账号" v-model="json_log.user">
           </div>
           <div class="si">
             <input type="password" placeholder="请输入密码" v-model="json_log.pass">
           </div>
-          <button @click="login">登录</button>
+          <div class="lo"><button @click="login">登录</button></div> 
         </div>
         <div class="zhus" v-show="!type">
           <div class="file">
@@ -23,7 +23,10 @@
           <div class="si">
             <input type="password" placeholder="请输入密码" v-model="json_zhu.pass">
           </div>
-          <button @click="zhu">注册</button>
+          <div class="si">
+            <input type="text" placeholder="请输入充值金币" v-model="json_zhu.chong">
+          </div>
+          <div class="lo"><button @click="zhu">注册</button></div>
         </div>
         <div class="btn">
           <div class="item" @click="type=true" style="border-radius: 2rem 0 0 2rem ;">登录</div>
@@ -46,6 +49,7 @@ export default {
       json_zhu: {
         user: "",
         pass: "",
+        chong:'',
         img_url:'',
       }
     };
@@ -81,7 +85,7 @@ export default {
           localStorage.user = data.data.datas;
           localStorage.picture = data.data.url;
         }
-      })
+      }) 
     },
     zhu() {
       this.$axios.post('/users/up',this.json_zhu)
@@ -156,7 +160,6 @@ h2 {
 .zhus {
   height: 7.8125rem /* 500/64 */;
   margin: 1.5625rem /* 100/64 */ auto;
-  overflow: hidden;
 }
 .file {
   width: 1.5625rem /* 100/64 */;
@@ -192,12 +195,22 @@ input {
 button {
   outline: none;
   border: none;
-  width: 85%;
-  height: 1.25rem /* 80/64 */;
+  width: 100%;
+  height:1.09375rem /* 70/64 */;
   border-radius: 0.3125rem;
-  margin: 0.5rem 0.7rem;
+  /* margin: 0.3rem 0.5rem; */
   background-color: green;
   font-size: 0.4rem;
   color: #fff;
+  
+}
+.btn{
+  width: 95%;
+  height: 1.25rem /* 80/64 */;
+  margin: 0 auto;
+}
+.lo{
+  width: 80%;
+  margin:.78125rem /* 50/64 */ auto;
 }
 </style>
