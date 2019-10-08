@@ -40,7 +40,6 @@ function x_dom($) {
 		qi.sanlh=$('#kjinfos1 tr').eq(i).find('td').eq(8).text()
 		arr.push(qi)
 		fs.writeFileSync('./datalist/kuaisan.json',JSON.stringify(arr),'utf8')
-		console.log(json)
 	}
 }
 run()
