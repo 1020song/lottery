@@ -120,68 +120,6 @@
 		</div>
 	</div>
 </template>
-<script>
-export default {
-	data() {
-		return {
-			btns_num:0,
-			types:'和值',
-			typebtns:false,
-			type_btns:['和值','三同号','二同号','三不同','二不同'],
-			datas:{
-				zhu:0,
-				jin:0
-			},
-			btn:{
-				H_num:[[4,5,6,7,8,9,10,11,12,13,14,15,16,17],[80,40,25,16,12,10,9,9,10,12,16,25,40,80]],
-				threeT_num:[[111,222,333,444,555,666]],
-				twoT_num:[[11,22,33,44,55,66],[1,2,3,4,5,6],['11*','22*','33*','44*','55*','66*']],
-				threeB_num:[1,2,3,4,5,6],
-				twoB_num:[1,2,3,4,5,6]
-			}
-		}
-	},
-	methods: {
-		btns(e,index){
-			if(this.types== this.type_btns[2]){
-				var tDiv= document.querySelectorAll('.T .btns')
-				var bDiv= document.querySelectorAll('.B .btns')
-					e.path.forEach(Element=>{
-						if(Element.className == 'btns'){
-							console.log(Element.parentNode)
-							Element.className='btns active'
-							if(Element.parentNode.className=='T'){
-								bDiv[index].className='btns'
-							}else if(Element.parentNode.className=='B'){
-								tDiv[index].className='btns'
-							}
-						}else if(Element.className == 'btns active'){
-							Element.className='btns'
-						}
-					})
-			}else{
-			e.path.forEach(Element=>{
-				if(Element.className=='btns'){
-					Element.className='btns active'
-					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
-						this.datas.zhu++
-						this.datas.jin+=2
-					}	
-				}else if(Element.className=='btns active'){
-					Element.className='btns'
-					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
-						this.datas.zhu--
-						this.datas.jin-=2
-					}	
-				}
-			})
-		}	
-	}
-}
-}
-</script>
 <style>
 	.md-button{
 		width: 100% !important;
@@ -207,7 +145,6 @@ export default {
 }
 .active{
 	border: .046875rem solid orange !important;
-	
 }
 .active *{
 color: orange
