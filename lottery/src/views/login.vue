@@ -23,6 +23,9 @@
           <div class="si">
             <input type="password" placeholder="请输入密码" v-model="json_zhu.pass">
           </div>
+          <div class="si">
+            <input type="text" placeholder="请输入充值金币" v-model="json_zhu.chong">
+          </div>
           <button @click="zhu">注册</button>
         </div>
         <div class="btn">
@@ -47,6 +50,7 @@ export default {
         user: "",
         pass: "",
         img_url:'',
+        chong:'',
       }
     };
   },
@@ -125,7 +129,7 @@ header {
 .content {
   width: 9.375rem /* 600/64 */;
   height: auto;
-  padding: 0 0.3125rem /* 20/64 */;
+  margin: 0 auto;
 }
 h2 {
   width: 80%;
@@ -156,7 +160,6 @@ h2 {
 .zhus {
   height: 7.8125rem /* 500/64 */;
   margin: 1.5625rem /* 100/64 */ auto;
-  overflow: hidden;
 }
 .file {
   width: 1.5625rem /* 100/64 */;

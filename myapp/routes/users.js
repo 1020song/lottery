@@ -6,7 +6,7 @@ var router = express.Router();
 /*注册*/
 router.post('/up', function (req, res) {
 	var json = req.body
-	if (json.user == '' || json.pass == ''|| json.img_url == '') {
+	if (json.user == '' || json.pass == ''|| json.img_url == ''||json.chong=='') {
 		res.send({
 			type: 'no',
 			data: '参数缺失'

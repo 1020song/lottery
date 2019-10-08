@@ -120,74 +120,18 @@
 		</div>
 	</div>
 </template>
-<script>
-export default {
-	data() {
-		return {
-			btns_num:0,
-			types:'和值',
-			typebtns:false,
-			type_btns:['和值','三同号','二同号','三不同','二不同'],
-			datas:{
-				zhu:0,
-				jin:0
-			},
-			btn:{
-				H_num:[[4,5,6,7,8,9,10,11,12,13,14,15,16,17],[80,40,25,16,12,10,9,9,10,12,16,25,40,80]],
-				threeT_num:[[111,222,333,444,555,666]],
-				twoT_num:[[11,22,33,44,55,66],[1,2,3,4,5,6],['11*','22*','33*','44*','55*','66*']],
-				threeB_num:[1,2,3,4,5,6],
-				twoB_num:[1,2,3,4,5,6]
-			}
-		}
-	},
-	methods: {
-		btns(e,index){
-			if(this.types== this.type_btns[2]){
-				var tDiv= document.querySelectorAll('.T .btns')
-				var bDiv= document.querySelectorAll('.B .btns')
-					e.path.forEach(Element=>{
-						if(Element.className == 'btns'){
-							console.log(Element.parentNode)
-							Element.className='btns active'
-							if(Element.parentNode.className=='T'){
-								bDiv[index].className='btns'
-							}else if(Element.parentNode.className=='B'){
-								tDiv[index].className='btns'
-							}
-						}else if(Element.className == 'btns active'){
-							Element.className='btns'
-						}
-					})
-			}else{
-			e.path.forEach(Element=>{
-				if(Element.className=='btns'){
-					Element.className='btns active'
-					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
-						this.datas.zhu++
-						this.datas.jin+=2
-					}	
-				}else if(Element.className=='btns active'){
-					Element.className='btns'
-					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
-						this.datas.zhu--
-						this.datas.jin-=2
-					}	
-				}
-			})
-		}	
-	}
-}
-}
-</script>
+
 <style>
 	.md-button{
 		width: 100% !important;
+		min-width: 1.25rem /* 80/64 */;
 		height: 1.2rem /* 58/64 */ !important;
-		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
+		/*padding: .09375rem  .125rem  !important;*/
 		margin: 0 !important;
+	}
+	.md-button-content{
+		width: 100%;
+		height: 100%;
 	}
 </style>
 <style scoped>
@@ -216,6 +160,7 @@ color: orange
 	width: 100% ;
 	height: 100% ;
 	padding: 0.2rem 0;
+	color: #f5f5f5;
 }
 .btns{
 	display: inline-block;
@@ -291,6 +236,9 @@ export default {
 			btns_num:0,
 			types:'和值',
 			typebtns:false,
+			cparr:[],
+			arr:[],
+			result:[],
 			type_btns:['和值','三同号','二同号','三不同','二不同'],
 			datas:{
 				zhu:0,
@@ -306,6 +254,18 @@ export default {
 		}
 	},
 	methods: {
+		// 二不同 三不同
+		combine(start, count) {
+			let i = 0;
+			for(i = start; i < this.arr.length + 1 - count; i++) {
+				this.result[count - 1] = i;
+				if(count - 1 == 0) {
+					console.log(this.result);
+				} else {
+					this.combine(++start, count - 1);
+				}
+			}
+		},
 		btns(e,index){
 			if(this.types== this.type_btns[2]){
 				// 判断是否是二同号
@@ -325,19 +285,42 @@ export default {
 					})
 			}else{
 			e.path.forEach(Element=>{
+				let val = e.path[1].firstElementChild.innerText
+				//console.log(val)
 				if(Element.className=='btns'){
 					Element.className='btns active'
 					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
+					this.cparr.push(val);// 存点击的数据
+					console.log(this.cparr)
+					//和值 三同号
+					if(this.types==this.type_btns[0]||this.types==this.type_btns[1]){
 						this.datas.zhu++
 						this.datas.jin+=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)
+					}
+					//三不同
+					if(this.types==this.type_btns[3]){
+						this.arr = this.cparr;
+						this.result = new Array(3);
+						this.combine(0, 3);
+						/*this.datas.zhu++
+						this.datas.jin+=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)*/
 					}	
 				}else if(Element.className=='btns active'){
 					Element.className='btns'
 					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
+					let index= this.cparr.indexOf(val);
+                    this.cparr.splice(index,1)
+					console.log(this.cparr)
+					if(this.types==this.type_btns[0]||this.types==this.type_btns[1]){
 						this.datas.zhu--
 						this.datas.jin-=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)
+						
 					}	
 				}
 			})

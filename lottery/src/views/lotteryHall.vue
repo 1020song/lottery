@@ -36,7 +36,7 @@
 				<span style="color:orange">{{$store.state.order.jin}}模拟金</span>
 			</div>
 			<div class="r_box">
-				<span style="color:white;font-size:.3rem">确定</span>
+				<router-link to='/continues'><span style="color:white;font-size:.3rem">确定</span></router-link>
 			</div>
 		</div>
 	</div>
