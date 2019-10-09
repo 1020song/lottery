@@ -51,6 +51,12 @@ export default {
         pass: "",
         chong:'',
         img_url:'',
+        //金币
+        chong:'',
+        //积分
+        point:0,
+        //模拟金
+        monijin:0,
       }
     };
   },
@@ -129,7 +135,7 @@ header {
 .content {
   width: 9.375rem /* 600/64 */;
   height: auto;
-  padding: 0 0.3125rem /* 20/64 */;
+  margin: 0 auto;
 }
 h2 {
   width: 80%;

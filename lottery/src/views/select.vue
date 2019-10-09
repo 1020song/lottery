@@ -123,9 +123,14 @@
 <style>
 	.md-button{
 		width: 100% !important;
+		min-width: 1.25rem /* 80/64 */;
 		height: 1.2rem /* 58/64 */ !important;
-		padding: .09375rem /* 6/64 */ .125rem /* 8/64 */ !important;
+		/*padding: .09375rem  .125rem  !important;*/
 		margin: 0 !important;
+	}
+	.md-button-content{
+		width: 100%;
+		height: 100%;
 	}
 </style>
 <style scoped>
@@ -153,6 +158,7 @@ color: orange
 	width: 100% ;
 	height: 100% ;
 	padding: 0.2rem 0;
+	color: #f5f5f5;
 }
 .btns{
 	display: inline-block;
@@ -228,6 +234,9 @@ export default {
 			btns_num:0,
 			types:'和值',
 			typebtns:false,
+			cparr:[],
+			arr:[],
+			result:[],
 			type_btns:['和值','三同号','二同号','三不同','二不同'],
 			datas:{
 				zhu:0,
@@ -245,6 +254,18 @@ export default {
 		}
 	},
 	methods: {
+		// 二不同 三不同
+		combine(start, count) {
+			let i = 0;
+			for(i = start; i < this.arr.length + 1 - count; i++) {
+				this.result[count - 1] = i;
+				if(count - 1 == 0) {
+					console.log(this.result);
+				} else {
+					this.combine(++start, count - 1);
+				}
+			}
+		},
 		btns(e,index){
 			if(this.types== this.type_btns[2]){
 				// 判断是否是二同号
@@ -258,34 +279,34 @@ export default {
 								bDiv[index].className='btns'
 								console.log(22222)
 								
-								if(this.nu=0){
-									this.nu++
+								// if(this.nu=0){
+								// 	this.nu++
 									
-								}else{
-									this.num++
-									this.nu=0
+								// }else{
+								// 	this.num++
+								// 	this.nu=0
 									
-								}
+								// }
 								
 								
-								console.log(this.num,'上')
-								console.log(this.nu,'下')
+								// console.log(this.num,'上')
+								// console.log(this.nu,'下')
 							}else if(Element.parentNode.className=='B'){
 								tDiv[index].className='btns'
 								console.log(333333)
 								
-								if(this.nu=0){
+								// if(this.nu=0){
 									
 									
-								}else{
-									this.num--;
-									this.nu++
-								}
+								// }else{
+								// 	this.num--;
+								// 	this.nu++
+								// }
 							
-								// 
-								// 
-								console.log(this.num,"上")
-								console.log(this.nu,'下')
+								// // 
+								// // 
+								// console.log(this.num,"上")
+								// console.log(this.nu,'下')
 							}
 						}else if(Element.className == 'btns active'){
 							Element.className='btns'
@@ -294,19 +315,42 @@ export default {
 					})
 			}else{
 			e.path.forEach(Element=>{
+				let val = e.path[1].firstElementChild.innerText
+				//console.log(val)
 				if(Element.className=='btns'){
 					Element.className='btns active'
 					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
+					this.cparr.push(val);// 存点击的数据
+					console.log(this.cparr)
+					//和值 三同号
+					if(this.types==this.type_btns[0]||this.types==this.type_btns[1]){
 						this.datas.zhu++
 						this.datas.jin+=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)
+					}
+					//三不同
+					if(this.types==this.type_btns[3]){
+						this.arr = this.cparr;
+						this.result = new Array(3);
+						this.combine(0, 3);
+						/*this.datas.zhu++
+						this.datas.jin+=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)*/
 					}	
 				}else if(Element.className=='btns active'){
 					Element.className='btns'
 					// 判断点击个数 num
-					if(this.types==this.type_btns[0]){
+					let index= this.cparr.indexOf(val);
+                    this.cparr.splice(index,1)
+					console.log(this.cparr)
+					if(this.types==this.type_btns[0]||this.types==this.type_btns[1]){
 						this.datas.zhu--
 						this.datas.jin-=2
+						this.$store.commit('setZhu',this.datas.zhu)
+						this.$store.commit('setJin',this.datas.jin)
+						
 					}	
 				}
 			})
