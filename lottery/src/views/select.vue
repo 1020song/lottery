@@ -239,7 +239,9 @@ export default {
 				twoT_num:[[11,22,33,44,55,66],[1,2,3,4,5,6],['11*','22*','33*','44*','55*','66*']],
 				threeB_num:[1,2,3,4,5,6],
 				twoB_num:[1,2,3,4,5,6]
-			}
+			},
+			num:0,
+			nu:0
 		}
 	},
 	methods: {
@@ -251,13 +253,43 @@ export default {
 					e.path.forEach(Element=>{
 						if(Element.className == 'btns'){
 							Element.className='btns active'
+							console.log(111111)
 							if(Element.parentNode.className=='T'){
 								bDiv[index].className='btns'
+								console.log(22222)
+								
+								if(this.nu=0){
+									this.nu++
+									
+								}else{
+									this.num++
+									this.nu=0
+									
+								}
+								
+								
+								console.log(this.num,'上')
+								console.log(this.nu,'下')
 							}else if(Element.parentNode.className=='B'){
 								tDiv[index].className='btns'
+								console.log(333333)
+								
+								if(this.nu=0){
+									
+									
+								}else{
+									this.num--;
+									this.nu++
+								}
+							
+								// 
+								// 
+								console.log(this.num,"上")
+								console.log(this.nu,'下')
 							}
 						}else if(Element.className == 'btns active'){
 							Element.className='btns'
+							console.log(444444)
 						}
 					})
 			}else{
