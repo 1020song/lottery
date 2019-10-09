@@ -1,0 +1,21 @@
+[
+    {
+    "title":'烟斗',
+    "info":'小号',
+    "goodsid":001,
+    "money":100,
+    "imgurl":'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg'
+    },{
+    "title":'烟斗',
+    "info":'中号',
+    "goodsid":002,
+    "money":500,
+    "imgurl":'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg'
+    },{
+    "title":'烟斗',
+    "info":'大号',
+    "goodsid":003,
+    "money":1000,
+    "imgurl":'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg'
+    }
+]

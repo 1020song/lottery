@@ -129,7 +129,7 @@ header {
 .content {
   width: 9.375rem /* 600/64 */;
   height: auto;
-  padding: 0 0.3125rem /* 20/64 */;
+  margin: 0 auto;
 }
 h2 {
   width: 80%;

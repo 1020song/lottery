@@ -21,7 +21,6 @@
 						<div>
 							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546077945538&di=003d3de1479ae95ab6131ca11d042c4a&imgtype=0&src=http%3A%2F%2Fa.vpimg3.com%2Fupload%2Fmerchandise%2Fpdcvis%2F146767%2F2017%2F1104%2F115%2F88257c95-7205-4390-8eab-635fc8384069_t.jpg" alt="">
 						</div>
-						
 						<p>iphoneX(尊贵铂金)</p>
 						<p>积分：999</p>
 						<p>市场参考价：9999.00</p>
