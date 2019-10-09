@@ -3,10 +3,12 @@
     <button type="button"
             class="v-btn v-btn--outline v-btn--depressed v-btn--small theme--light primary--text">
       <div class="v-btn__content">
+        <router-link to='/lotteryHall'>
         <i aria-hidden="true"
            class="v-icon material-icons theme--light"
            style="font-size: 16px;">add</i>
         继续选号
+        </router-link>
       </div>
     </button>
     <div class="printer"></div>

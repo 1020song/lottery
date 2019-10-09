@@ -51,6 +51,12 @@ export default {
         pass: "",
         chong:'',
         img_url:'',
+        //金币
+        chong:'',
+        //积分
+        point:0,
+        //模拟金
+        monijin:0,
       }
     };
   },

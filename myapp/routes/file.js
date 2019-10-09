@@ -5,7 +5,7 @@ const router = express.Router()
       
 router.use(multer({dest:'./public/file/'}).any())
    
-
+//图片上传
 router.post('/files',(req,res)=>{
 	var files = req.files[0]
 	var oldname = files.filename
