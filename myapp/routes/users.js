@@ -6,12 +6,14 @@ var router = express.Router();
 /*注册*/
 router.post('/up', function (req, res) {
 	var json = req.body
+	console.log(json)
 	if (json.user == '' || json.pass == ''|| json.img_url == ''||json.chong=='') {
 		res.send({
 			type: 'no',
 			data: '参数缺失'
 		})
 	} else {
+		console.log('ok')
 		var user_type = true
 		var vip = eval(fs.readFileSync('./datalist/login.txt', 'utf8'))
 		for (var i = 0; i < vip.length; i++) {
@@ -39,6 +41,9 @@ router.post('/up', function (req, res) {
 /*登录*/
 router.post('/in', function(req, res) {
 	var json = req.body
+	res.cookie('user',json.user,{maxAge:1000*60*60*24*7})
+	res.cookie('pass',json.pass,{maxAge:1000*60*60*24*7})
+	console.log(json)
 	if(json.user == '' || json.pass == '') {
 		res.send({
 			type: 'no',
@@ -59,12 +64,14 @@ router.post('/in', function(req, res) {
 			}
 		}
 		if(user_type) {
+
 			res.send({
 				type: 'yes',
 				data: '登录成功',
 				url:img,
 				datas:data
 			})
+
 		} else {
 			res.send({
 				type: 'no',

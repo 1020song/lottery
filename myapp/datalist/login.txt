@@ -1,1 +1,1 @@
-[]
+{"user":"123","pass":"202cb962ac59075b964b07152d234b70","chong":"4564564","img_url":"http://localhost:8000/file/81840f34121438142f70cce7bf7ae7d7.jpg","point":1,"monijin":0}

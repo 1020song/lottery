@@ -90,6 +90,7 @@ export default {
           this.$router.push({name:'home'})
           localStorage.user = data.data.datas;
           localStorage.picture = data.data.url;
+          // user.cookie =  data.data.datas
         }
       }) 
     },
