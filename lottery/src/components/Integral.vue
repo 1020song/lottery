@@ -38,28 +38,12 @@
 					</div> -->
 				</div>
 				<div class="item1 clearfix">
-					<div class="list1">
+					<div class="list1" v-for="i in shoplist">
 						<div>
-							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
+							<img :src="i.imgurl" alt="">
 						</div>
-						<p>烟斗(小号)</p>
-						<p>积分：9999</p>
-						<p>市场参考价：9999.00</p>
-					</div>
-					<div class="list1">
-						<div>
-							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
-						</div>
-						<p>烟斗(中号)</p>
-						<p>积分：9999</p>
-						<p>市场参考价：9999.00</p>
-					</div>
-					<div class="list1">
-						<div>
-							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546081779966&di=20ebc0440402aa12a980d968b228e5ce&imgtype=0&src=http%3A%2F%2Fimages.51bi.com%2Fopt%2Fsiteimg%2Fp%2F20140610%2F1043b5f316d16f0a00c722bec039fac5.jpeg" alt="">
-						</div>
-						<p>烟斗(大号)</p>
-						<p>积分：9999</p>
+						<p>{{i.title}}({{i.info}})</p>
+						<p>{{i.money}}</p>
 						<p>市场参考价：9999.00</p>
 					</div>
 				</div>
@@ -77,10 +61,15 @@ export default {
   	return{
 		  tabId:0,
 		  data:'',
+		  shoplist:'',
   	}
   },
   created () {
 	this.qqsj()
+	this.$axios.get('/goods/shop').then((data)=>{
+		//   console.log(data.data);
+		  this.shoplist = data.data
+	  })
   },
   methods: {
 	qqsj(){
@@ -102,6 +91,7 @@ export default {
 			}
 		}).then((res)=>{
 			console.log(res)
+			alert(res.data)
 		}).catch((err)=>{
 			console.log(err)
 		})
@@ -111,8 +101,14 @@ export default {
 //   components: {
 	
 //   }
+		 
+  	}
+//   },
+//   created() {
+	  
+//   },
  
-}
+// }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

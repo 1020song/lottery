@@ -104,7 +104,7 @@ export default {
 				var mx = 0
 				element.sanbt.split('').forEach((e,i) => {
 					if(e != 0) mx += parseInt(e)
-				})
+				}) 
 				max.push(mx>=10?'大':'小')
 				// 蓝色小圆圈
 				var blues = element.prizeNum.split(','),blues1=''

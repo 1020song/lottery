@@ -3,81 +3,90 @@ var fs = require('fs')
 var md5 = require('md5')
 var router = express.Router();
 router.get('/hqsj',(req,res)=>{
-    // console.log('123')   
     var str=fs.readFileSync('./datalist/shangpin.txt','utf8')
-    // console.log("str")
     res.send(str)
    
 })
 router.post('/buy',(req,res)=>{
     var json = req.body.params;//前台传来的数据
     console.log(json,'shangpin')
-    var cook = req.cookies;//获取cookies
+    var cook = req.cookies;//获取前台cookies
     cook.pass=md5(cook.pass)
     console.log(cook,'cookies')
     var arr = eval(fs.readFileSync('./datalist/login.txt', 'utf8'))//获取用户信息
     console.log(arr,'用户')
     var shangpin = eval(fs.readFileSync('./datalist/shangpin.txt', 'utf8'))//获取商品信息
     console.log(shangpin,'商品')
-    if (json.shang == '') {
+    if (json.shang == '') {//判断前台的传过来的数据
     	res.send('页面发生错误')
     }else{
     	var yhxx = '';
     	var sp = '';
     	var types = false;
     	var ty = false;
-    	for(var i = 0;i<arr.length;i++){
-	    	if(arr[i].user == cook.user && arr[i].pass == cook.pass){
-	    		// console.log('用户已找到')
-	    		yhxx = arr[i]
+    	for(var i = 0;i<arr.length;i++){//循环数据♂
+	    	if(arr[i].user == cook.user && arr[i].pass == cook.pass){//获取当前用户信息
+	    		yhxx = arr[i]//得到当前用户数据
 	    		types = true
-	    		// mima = arr[i].pass
 	    	}
 	    }
-	    if(types == false){
+	    if(types == false){//判单是否登录
 	    	res.send('用户名密码不匹配')
 	    }
-	   	for(var j=0;j<shangpin.length;j++){
-    		if(Number(shangpin[j].id)==json.shang){
-    			sp = shangpin[j]
+	   	for(var j=0;j<shangpin.length;j++){//循环商品
+    		if(Number(shangpin[j].id)==json.shang){//判断购买的那件商品
+    			sp = shangpin[j]//得到当前商品信息
     			ty = true
-    			// console.log('可以购买1')
     		}
     	}
-    	if(ty == false){
+    	if(ty == false){//判断商品是否存在
     		res.send('该商品已不存在')
     	}
-    	if(Number(yhxx.point)>=Number(sp.score)){
-    		var sss = true
-    		var aa = ''
-    		var num = Number(yhxx.point)-Number(sp.score)
-    		yhxx.point = num
-    		console.log(yhxx,787878)
-    		console.log(num,45465465)
-    		// fs.writeFileSync('./datalist/login.txt',JSON.stringify(yhxx),'utf8')
-    		// var vip = eval(fs.readFileSync('./datalist/login.txt', 'utf8'))
-    		// console.log(vip,1231123)
-    		// for(var s=0;s<arr.length;s++){
-    		// 	if(yhxx.user == arr[s].user && yhxx==arr[s].pass){
-    		// 		arr[s].point = num;
-    		// 		console.log(arr[s],'147')
-
-    		// 	}
-    		// }
-    		// for(var z=0;z<vip.length;z++){
-    		// 
-    			
-    		// }
-    		
-    		
-    		console.log('可以购买')
+    	if(Number(yhxx.point)>=Number(sp.score)){//判断积分
+    		var num = Number(yhxx.point)-Number(sp.score)//得到的剩余积分
+    		yhxx.point = num//赋值
+    		for(var s=0;s<arr.length;s++){//获取当前用户信息
+    			if(yhxx.user == arr[s].user && yhxx.pass==arr[s].pass){//判断账户
+    				arr[s].point = num;//赋值
+                    fs.writeFileSync('./datalist/login.txt',JSON.stringify(arr),'utf8')//购买完成的修改
+    			}
+    		}
+            var lsjl = eval(fs.readFileSync('./datalist/'+yhxx.user+'.txt','utf8'))//获取历史记录
+            var myDate = new Date();  //时间
+            myDate.getYear(); //获取当前年份(2位)  
+            myDate.getFullYear(); //获取完整的年份(4位,1970-????)  
+            myDate.getMonth(); //获取当前月份(0-11,0代表1月)         // 所以获取当前月份是myDate.getMonth()+1;   
+            myDate.getDate(); //获取当前日(1-31)  
+            myDate.getDay(); //获取当前星期X(0-6,0代表星期天)  
+            myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)  
+            myDate.getHours(); //获取当前小时数(0-23)  
+            myDate.getMinutes(); //获取当前分钟数(0-59)  
+            myDate.getSeconds(); //获取当前秒数(0-59)  
+            myDate.getMilliseconds(); //获取当前毫秒数(0-999)  
+            myDate.toLocaleDateString(); //获取当前日期  
+            var mytime=myDate.toLocaleTimeString(); //获取当前时间  
+            myDate.toLocaleString( ); //获取日期与时间 
+            console.log(mytime,789)
+            lsjl.push({
+                user:yhxx.user,
+                pass:yhxx.pass,
+                chong:yhxx.chong,
+                img_url:yhxx.img_url,
+                point:yhxx.point,
+                monijin:yhxx.monijin,
+                img:sp.img,
+                goods:sp.goods,
+                score:sp.score,
+                market:sp.market,
+                id:sp.id,
+                sj:myDate.toLocaleString()
+            })
+            fs.writeFileSync('./datalist/'+yhxx.user+'.txt',JSON.stringify(lsjl),'utf8')//更改历史记录
+            res.send('购买成功')
 
     	}else{
     		res.send('积分不足')
     	}
-   		console.log(yhxx,sp)
-
-    	res.send('no')
     }
     
     

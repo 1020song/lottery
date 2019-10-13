@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var fileRouter = require('./routes/file')
 var duihuan = require('./routes/duihuan')
 
+var goodsRouter = require('./routes/goods');
 var app = express();
 
 // view engine setup
@@ -25,6 +26,7 @@ app.use('/users', usersRouter);
 app.use('/file',fileRouter)
 app.use('/indexs',indexRouter)
 app.use('/duihuan',duihuan)
+app.use('/goods',goodsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
