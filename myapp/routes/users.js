@@ -26,7 +26,8 @@ router.post('/up', function (req, res) {
 			json.pass=md5(json.pass)
 			fs.writeFileSync('./datalist/login.txt', JSON.stringify(vip), 'utf8')
 			var kkk = []
-			fs.writeFileSync('./datalist/'+json.user+'.txt',JSON.stringify(kkk),'utf8')
+			fs.writeFileSync('./datalist/'+json.user+'dui.txt',JSON.stringify(kkk),'utf8')
+			fs.writeFileSync('./datalist/'+json.user+'gou.txt',JSON.stringify(kkk),'utf8')
 			res.send({
 				type: 'yes',
 				data: '注册成功'

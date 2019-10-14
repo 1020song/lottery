@@ -317,7 +317,7 @@ export default {
 					}
 					//三不同
 					if(this.types==this.type_btns[3]){
-						this.arr = this.cparr;
+						//this.arr = this.cparr;
 						this.result = new Array(3);
 						this.combine(0, 3);
 					}	

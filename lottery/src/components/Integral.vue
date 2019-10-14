@@ -29,7 +29,7 @@
 					</div>
 				</div>
 				<div class="item1 clearfix">
-					<div class="list1" v-for="(i,index) in shoplist" :key="index">
+					<div class="list1" v-for="(i,index) in shoplist" :key="index" @click="gmbuy(i)">
 						<div>
 							<img :src="i.imgurl" alt="">
 						</div>
@@ -53,10 +53,12 @@ export default {
 		  tabId:0,
 		  data:'',
 		  shoplist:'',
+		  buydata:'',
   	}
   },
   created () {
 	this.qqsj()
+	this.qqbuy()
 	this.$axios.get('/goods/shop').then((data)=>{
 		//   console.log(data.data);
 		  this.shoplist = data.data
@@ -86,7 +88,30 @@ export default {
 		}).catch((err)=>{
 			console.log(err)
 		})
-	}
+	},
+	gmbuy(e){
+		console.log(e)
+		this.$axios.post('/gmbuy/jsbuy',{//购买
+			params:{
+				shang:e.goodsid
+			}
+		}).then((res)=>{
+			console.log(res)
+			alert(res.data)
+		}).catch((err)=>{
+			console.log(err)
+		})
+	},
+	qqbuy(){
+		 this.$axios.get('/gmbuy/qqbuy',{//获取数据
+			
+		 }).then((res)=>{
+			this.buydata = res.data
+			console.log(this.buydata)
+		 }).catch((err)=>{
+			 console.log(err)
+		 })
+	  },
 	
   }	 
 }

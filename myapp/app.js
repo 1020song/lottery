@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var fileRouter = require('./routes/file')
 var duihuan = require('./routes/duihuan')
+var gmbuy = require('./routes/gmbuy')
 
 var goodsRouter = require('./routes/goods');
 var app = express();
@@ -26,6 +27,7 @@ app.use('/users', usersRouter);
 app.use('/file',fileRouter)
 app.use('/indexs',indexRouter)
 app.use('/duihuan',duihuan)
+app.use('/gmbuy',gmbuy)
 app.use('/goods',goodsRouter)
 
 // catch 404 and forward to error handler

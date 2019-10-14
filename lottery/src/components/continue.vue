@@ -41,7 +41,7 @@
         <span class="footer_l_span2">8模拟金</span>
       </div>
       <div class="footer_r">
-        <span>投注</span>
+        <span @click="tou()">投注</span>
       </div>
     </div>
   </div>
@@ -57,6 +57,11 @@ export default {
     del(i){
       this.$store.state.order.bigarr.splice(i,1)
       this.list=this.$store.state.order.bigarr
+    },
+    tou(){
+      this.$axios.post('/duihuan/zj',this.list).then((res)=>{
+			console.log(res)
+		})
     }
   },
   created(){

@@ -21,7 +21,12 @@ module.exports = {
         ws: true,
         changeOrigin: false
       },
-      '/goods':{
+      '/goods': {
+        target: 'http://localhost:8000',
+        ws: true,
+        changeOrigin: false
+      },
+      '/gmbuy': {
         target: 'http://localhost:8000',
         ws: true,
         changeOrigin: false
