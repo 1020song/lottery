@@ -35,8 +35,8 @@
 				<span style="color:white" >共{{$store.state.order.zhu}}注</span>
 				<span style="color:orange">{{$store.state.order.jin}}模拟金</span>
 			</div>
-			<div class="r_box">
-				<router-link to='/continues'><span style="color:white;font-size:.3rem">确定</span></router-link>
+			<div class="r_box" @click="btnss">
+				<span style="color:white;font-size:.3rem">确定</span>
 			</div>
 		</div>
 	</div>
@@ -197,5 +197,11 @@ export default {
 	beforeDestroy() {
 		clearInterval(this.tid)
 	},
+	methods:{
+		btnss(){
+			this.$router.push({path:'/continues'})
+			this.$store.commit('setBigarr',this.$store.state.order.json)
+		}
+	}
 }
 </script>

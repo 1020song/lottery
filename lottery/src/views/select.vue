@@ -237,6 +237,12 @@ export default {
 			cparr:[],
 			arr:[],
 			result:[],
+			arrItem:{
+				jin:0,
+				zhu:0,
+				arr:[],
+				type:''
+			},
 			type_btns:['和值','三同号','二同号','三不同','二不同'],
 			datas:{
 				zhu:0,
@@ -278,35 +284,9 @@ export default {
 							if(Element.parentNode.className=='T'){
 								bDiv[index].className='btns'
 								console.log(22222)
-								
-								// if(this.nu=0){
-								// 	this.nu++
-									
-								// }else{
-								// 	this.num++
-								// 	this.nu=0
-									
-								// }
-								
-								
-								// console.log(this.num,'上')
-								// console.log(this.nu,'下')
 							}else if(Element.parentNode.className=='B'){
 								tDiv[index].className='btns'
 								console.log(333333)
-								
-								// if(this.nu=0){
-									
-									
-								// }else{
-								// 	this.num--;
-								// 	this.nu++
-								// }
-							
-								// // 
-								// // 
-								// console.log(this.num,"上")
-								// console.log(this.nu,'下')
 							}
 						}else if(Element.className == 'btns active'){
 							Element.className='btns'
@@ -316,11 +296,12 @@ export default {
 			}else{
 			e.path.forEach(Element=>{
 				let val = e.path[1].firstElementChild.innerText
-				//console.log(val)
 				if(Element.className=='btns'){
 					Element.className='btns active'
 					// 判断点击个数 num
+					this.$store.commit('setZhu',this.datas.zhu)
 					this.cparr.push(val);// 存点击的数据
+					this.$store.commit('setJin',this.datas.jin)
 					console.log(this.cparr)
 					//和值 三同号
 					if(this.types==this.type_btns[0]||this.types==this.type_btns[1]){
@@ -328,16 +309,17 @@ export default {
 						this.datas.jin+=2
 						this.$store.commit('setZhu',this.datas.zhu)
 						this.$store.commit('setJin',this.datas.jin)
+						this.arrItem.jin=this.datas.jin
+						this.arrItem.zhu=this.datas.zhu
+						this.arrItem.type=this.types
+						this.arrItem.arr=this.cparr
+						this.$store.commit('setJson',this.arrItem)
 					}
 					//三不同
 					if(this.types==this.type_btns[3]){
 						this.arr = this.cparr;
 						this.result = new Array(3);
 						this.combine(0, 3);
-						/*this.datas.zhu++
-						this.datas.jin+=2
-						this.$store.commit('setZhu',this.datas.zhu)
-						this.$store.commit('setJin',this.datas.jin)*/
 					}	
 				}else if(Element.className=='btns active'){
 					Element.className='btns'

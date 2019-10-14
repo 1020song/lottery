@@ -1,1 +1,1 @@
-[{"user":"1","pass":"c4ca4238a0b923820dcc509a6f75849b","chong":"1000","img_url":"http://localhost:8000/file/ae0424ac0f07660095c51a5846a4e24f.jpg","point":171528,"monijin":0},{"user":"2","pass":"c4ca4238a0b923820dcc509a6f75849b","chong":"1000","img_url":"http://localhost:8000/file/ae0424ac0f07660095c51a5846a4e24f.jpg","point":1,"monijin":0},{"user":"3","pass":"eccbc87e4b5ce2fe28308fd9f2a7baf3","chong":"3","img_url":"http://localhost:8000/file/66e44fb42a89c5e090584a70e6c122b9.jpg","point":995604,"monijin":0}]
+[]

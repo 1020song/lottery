@@ -13,23 +13,21 @@
     </button>
     <div class="printer"></div>
     <div class="print-paper">
-      <div class="v-list v-list--two-line theme--light">
+      <div class="v-list v-list--two-line theme--light" v-for="(i,index) in list" :key="index">
         <div class="mydiv">
           <div class="v-list__tile v-list__tile--avatar theme--light">
             <div class="v-list__tile__action">
               <i aria-hidden="true"
-                 class="v-icon grey--text text--lighten-1 material-icons theme--light">delete</i></div>
+                 class="v-icon grey--text text--lighten-1 material-icons theme--light" @click="del(index)">delete</i></div>
             <div class="v-list__tile__content">
               <div class="v-list__tile__title red--text text--darken-4">
-                5
-
-                8
+                <span v-for="(j,index) in i.arr" :key="index">{{j}} </span>
               </div>
               <div class="v-list__tile__sub-title">
                 <small>
-                  和值
-                  2注
-                  4模拟金
+                  {{i.type}}
+                  {{i.zhu}}注
+                  {{i.jin}}模拟金
                 </small></div>
             </div>
           </div>
@@ -50,11 +48,23 @@
 </template>
 <script>
 export default {
-
+  data(){
+    return{
+      list:[]
+    }
+  },
+  methods:{
+    del(i){
+      this.$store.state.order.bigarr.splice(i,1)
+      this.list=this.$store.state.order.bigarr
+    }
+  },
+  created(){
+    this.list=this.$store.state.order.bigarr
+    console.log(this.$store.state.order.bigarr)
+  }
 }
 </script>
-<style scoped>
-</style>
 <style scoped>
 .v-btn.v-btn--outline,
 .v-btn.v-btn--outline:hover {
