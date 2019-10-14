@@ -16,10 +16,10 @@
         <!--        兑换-->
         <div class="operate">
           <div class="oper_price">
-            <span>1420模拟金</span>
+            <span>{{monijin}}模拟金</span>
           </div>
           <div class="oper_convert">
-            <span>2积分</span>
+            <span>{{point}}积分</span>
             <router-link
               to="/Integral"
               style="color: #fff;margin-left: 0.3125rem;text-decoration: none"
@@ -53,6 +53,8 @@ export default {
       picture: "",
       type: false,
       datas: "",
+      monijin:'--',
+      point:'--',
       arr: [
         { img: require("../assets/img/1.png"), name: "河北快三" },
         { img: require("../assets/img/2.jpg"), name: "安徽快三" },
@@ -77,13 +79,11 @@ export default {
       this.type = true;
     }else{
       this.type = false;
+      this.monijin='--'
+        this.point='--'
     }
-    // if (this.user != "") {
-    //   this.type = true;
-    // } else {
-    //   this.type = false;
-    // }
     this.is()
+    this.mo()
   },
   methods: {
     tartTime() {
@@ -92,13 +92,21 @@ export default {
       return hour;
     },
     is() {
-      // this.datas = this.$route.params.name;
       if(localStorage.user){
-        // localStorage.user = this.datas.data.datas;
-        // localStorage.picture = this.datas.data.url;
         this.user = localStorage.user;
         this.picture = localStorage.picture;
       }
+    },
+    mo(){
+      this.$http.get('/users/mo',{
+        params:{
+          user:this.user
+        }
+      }).then((data) => {
+        console.log(data)
+        this.monijin=data.data.data.monijin
+        this.point=data.data.data.point
+      })
     }
   }
 };

@@ -2,7 +2,36 @@ var express = require('express');
 var fs = require('fs')
 var md5 = require('md5')
 var router = express.Router();
-
+router.get('/mo',function(req,res){
+	var json = req.query
+	if (json.user == '') {
+		res.send({
+			type: 'no',
+			data: '参数缺失'
+		})
+	}else{
+		var user_type = true
+		var userlist
+		var vip = eval(fs.readFileSync('./datalist/login.txt', 'utf8'))
+		for (var i = 0; i < vip.length; i++) {
+			if (vip[i].user == json.user) {
+				user_type = false
+				userlist=vip[i]
+			}
+		}
+		if(user_type){
+			res.send({
+				type: 'no',
+				data: '用户名不匹配'
+			})
+		}else{
+			res.send({
+				type: 'ok',
+				data: userlist
+			})
+		}
+	}
+})
 /*注册*/
 router.post('/up', function (req, res) {
 	var json = req.body
